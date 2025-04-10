@@ -6,8 +6,8 @@ import Sidemenu from '../layouts/Sidemenu';
 const Profile = () => {
   // Replace this with actual data fetching logic, e.g., from an API
   const adminProfile = {
-    profilePicture: 'https://preview.redd.it/this-might-be-my-favorite-cat-pic-that-ive-ever-taken-had-v0-0yjbxdb4bofd1.jpeg?auto=webp&s=82ae3586830630100b0587602ced18182a291a91', // Update with actual path or URL
-    firstName: 'Momoy',
+    profilePicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRro1CrNvxykxDQFNv4kgIOYO3VghtaAld4sUy2_-atrgxnwmTQFwpIBsKLc7GsQWJi3hc&usqp=CAU', // Update with actual path or URL
+    firstName: 'Moymoy',
     lastName: 'Totoro',
     email: 'moymoy@gmail.com',
     gender: 'Male',

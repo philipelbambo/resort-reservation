@@ -7,6 +7,10 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetMessage, setResetMessage] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
   const navigate = useNavigate();
 
   const temporaryCredentials = {
@@ -16,7 +20,7 @@ const LoginPage = () => {
       dashboard: "/staff-dashboard",
     },
     admin: {
-      email: "dashboard@gmail.com",
+      email: "philipyupatelbambo@gmail.com",
       password: "dashboard123",
       dashboard: "/dashboard",
     },
@@ -32,6 +36,24 @@ const LoginPage = () => {
     } else {
       setError("Invalid email or password. Please try again.");
     }
+  };
+
+  const handleForgotPassword = (e) => {
+    e.preventDefault();
+    setResetMessage("Password reset instructions sent to your email.");
+  };
+
+  const generateVerificationCode = () => {
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    setVerificationCode(code);
+    return code;
+  };
+
+  const sendVerificationCode = () => {
+    const code = generateVerificationCode();
+    // Simulate sending the code to the user's email
+    console.log(`Verification code ${code} sent to ${resetEmail}`);
+    setResetMessage(`Verification code sent to ${resetEmail}`);
   };
 
   return (
@@ -94,7 +116,13 @@ const LoginPage = () => {
               <input type="checkbox" id="remember" className="h-6 w-6 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
               <label htmlFor="remember" className="text-base text-violet-950">Remember me</label>
             </div>
-            <a href="#" className="text-base text-violet-950 hover:underline">Forgot password?</a>
+            <a
+              href="#"
+              className="text-base text-violet-950 hover:underline"
+              onClick={() => setShowForgotPassword(true)}
+            >
+              Forgot password?
+            </a>
           </div>
           <button
             type="submit"
@@ -109,6 +137,51 @@ const LoginPage = () => {
           </p>
         </div>
       </motion.div>
+
+      {showForgotPassword && (
+        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 className="text-2xl font-bold mb-4">Forgot Password</h2>
+            <form onSubmit={handleForgotPassword}>
+              <div className="mb-4">
+                <label htmlFor="resetEmail" className="block text-base font-medium text-gray-700">Email</label>
+                <input
+                  id="resetEmail"
+                  type="email"
+                  placeholder="Enter your email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  className="mt-2 block w-full px-4 py-2 text-lg border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+              {resetMessage && <div className="text-green-500 text-sm mb-4">{resetMessage}</div>}
+              <div className="flex justify-between">
+                <button
+                  type="button"
+                  className="px-4 py-2 text-lg text-black bg-gray-200 rounded-lg hover:bg-gray-300"
+                  onClick={() => setShowForgotPassword(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="px-2 py-2 text-lg bg-blue-500 text-black rounded-lg hover:bg-blue-600"
+                  onClick={sendVerificationCode}
+                >
+                  Try another way
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 text-lg bg-blue-500 text-black rounded-lg hover:bg-blue-600"
+                >
+                  Reset Password
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

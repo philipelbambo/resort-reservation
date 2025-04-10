@@ -27,7 +27,7 @@ const Homepage = () => {
     },
     {
       id: 2,
-      title: "River Breeze Cottage",
+      title: "The Gathering Nest cottage",
       description: "Enjoy our exclusive stretch of pristine white sand beach with crystal clear waters, perfect for swimming, sunbathing, and water sports.",
       image: "https://cdn.prod.website-files.com/59a30a523e53e400017c4ded/59ca1872b5fc1c000144b77b_delight01.jpg"
     },
@@ -39,7 +39,7 @@ const Homepage = () => {
     },
     {
       id: 4,
-      title: "Ocean Bliss Villa",
+      title: "Beach Breeze Cottage",
       description: "Rejuvenate at our full-service spa offering massages, facials, and holistic treatments in a serene tropical setting.",
       image: "https://media-cdn.tripadvisor.com/media/photo-s/01/8d/dd/99/can-t-help-feeling-introspecti.jpg"
     },
@@ -51,13 +51,13 @@ const Homepage = () => {
     },
     {
       id: 6,
-      title: "Beach view Suite",
+      title: "Beach view",
       description: "Wake up to breathtaking mountain vistas in this elegantly appointed suite featuring a private balcony and premium amenities.",
       image: "https://i2.wp.com/c1.staticflickr.com/3/2879/33918880552_69499c8c56_c.jpg?w=1200&ssl=1"
     },
     {
       id: 7,
-      title: "DELUXE",
+      title: "Deluxe",
       description: "Private villa with direct lagoon access, perfect for romantic getaways with stunning sunset views from your own deck.",
       image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/507116774.jpg?k=6a62ed271ca5d04f14a2a5cee2a174334e3e41998043831b01a6bc7361a785c9&o=&hp=1"
     }
@@ -70,14 +70,15 @@ const Homepage = () => {
         <div className="container mx-auto flex justify-between items-center py-5 px-0">
           <div className="text-2xl font-bold">
             <a className="hero-text" href="#">
-              <span className="text-blue-900">Aquarius Beach</span>
+            <span className="text-black text-4xl">𝒜𝓆𝓊𝒶𝓇𝒾𝓊𝓈 𝐵𝑒𝒶𝒸𝒽</span>
+
             </a>
           </div>
           <div className="text-2xl md:flex font-bold space-x-15 font-serif italic">
-            <Link className="text-gray-700 hover:text-yellow-500" to="/">Home</Link>
-            <Link className="text-gray-700 hover:text-yellow-500" to="/gallery">Gallery</Link>
-            <Link className="text-gray-700 hover:text-yellow-500" to="/about">About Us</Link>
-            <Link className="text-gray-700 hover:text-yellow-500" to="/contact">Contact Us</Link>
+            <Link className="text-black hover:text-yellow-500" to="/">Home</Link>
+            <Link className="text-black hover:text-yellow-500" to="/gallery">Gallery</Link>
+            <Link className="text-black hover:text-yellow-500" to="/about">About Us</Link>
+            <Link className="text-black hover:text-yellow-500" to="/contact">Contact/Info</Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
             <a className="text-gray-700 hover:text-yellow-500" href="#">
@@ -137,7 +138,7 @@ const Homepage = () => {
 
       {/* Resort Features Section */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-16 text-blue-900">Discover Aquarius Beach Resort</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-black">Discover Aquarius Beach Resort</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {resortFeatures.map((feature, index) => (
             <div

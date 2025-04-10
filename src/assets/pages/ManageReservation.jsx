@@ -10,8 +10,11 @@ const ManageReservations = () => {
     { id: 3, guestName: 'John Doe', roomNumber: '102', cottageNumber: '', checkInDate: '2024-01-03', checkOutDate: '2024-01-07', status: 'pending', type: 'room' },
     { id: 4, guestName: 'Jane Smith', roomNumber: '', cottageNumber: 'C02', checkInDate: '2024-01-04', checkOutDate: '2024-01-08', status: 'accepted', type: 'cottage' },
     { id: 5, guestName: 'Alice Johnson', roomNumber: '103', cottageNumber: '', checkInDate: '2024-01-05', checkOutDate: '2024-01-09', status: 'pending', type: 'room' },
+    { id: 6, guestName: 'Bob Brown', roomNumber: '104', cottageNumber: '', checkInDate: '2024-01-06', checkOutDate: '2024-01-10', status: 'accepted', type: 'room' },
+    { id: 7, guestName: 'Charlie Green', roomNumber: '', cottageNumber: 'C03', checkInDate: '2024-01-07', checkOutDate: '2024-01-11', status: 'pending', type: 'cottage' },
+    { id: 8, guestName: 'David White', roomNumber: '105', cottageNumber: '', checkInDate: '2024-01-08', checkOutDate: '2024-01-12', status: 'accepted', type: 'room' },
   ]);
-
+  
   const [editReservation, setEditReservation] = useState(null);
   const [viewReservation, setViewReservation] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -71,7 +74,7 @@ const ManageReservations = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-5">
-      <Header />
+      <Header />  
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-3">
           <Sidemenu />
@@ -120,26 +123,26 @@ const ManageReservations = () => {
                       <div className="grid grid-cols-4 gap-2">
                         <button
                           onClick={() => handleViewReservation(reservation)}
-                          className="flex-1 p-2 bg-blue-400 text-white rounded hover:bg-blue-600"
+                          className="flex-1 p-2 bg-cyan-600 text-black rounded-2xl hover:bg-blue-300"
                         >
                           View
                         </button>
                         <button
                           onClick={() => handleEditReservation(reservation)}
-                          className="flex-1 p-2 bg-green-300 text-white rounded hover:bg-yellow-600"
+                          className="flex-1 p-2 bg-amber-700 text-black rounded-2xl hover:bg-yellow-300"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDeleteReservation(reservation.id)}
-                          className="flex-1 p-2 bg-red-500 text-white rounded hover:bg-red-600"
+                          className="flex-1 p-2 bg-red-800 text-black rounded-2xl hover:bg-red-300"
                         >
                           Cancel
                         </button>
                         {reservation.status === 'pending' && (
                           <button
                             onClick={() => handleAcceptReservation(reservation.id)}
-                            className="flex-1 p-2 bg-green-500 text-white rounded hover:bg-green-600"
+                            className="flex-1 p-2 bg-green-700 text-black rounded-2xl hover:bg-green-300"
                           >
                             Accept
                           </button>

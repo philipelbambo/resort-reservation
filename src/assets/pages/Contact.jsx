@@ -19,12 +19,11 @@ const ResortContact = () => {
       <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Close Button (Top-Left) */}
-      <button
-        className="absolute top-6 left-6 bg-white text-blue-500 px-4 py-2 rounded-lg text-lg font-semibold shadow-md hover:bg-blue-400 hover:text-white transition z-50"
-        onClick={handleClose}
-      >
-        Close
-      </button>
+      <a href="/" className="absolute top-4 left-4 bg-black text-white text-3xl p-4 rounded-full shadow-md hover:bg-gray-300 transition-all">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15 5L7 12L15 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
 
       {/* Contact Card (sharp, no blur) */}
       <div className="w-full max-w-4xl p-20 bg-white/90 backdrop-blur-sm shadow-2xl rounded-2xl border border-gray-300 relative z-10">

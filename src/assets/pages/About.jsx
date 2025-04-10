@@ -8,15 +8,13 @@ export default function AboutUs() {
   };
 
   return (
-    <section className="bg-blue-600 py-12 px-6 text-center text-white relative">
-      {/* Close text on the left side */}
-      <button
-        onClick={handleClose}
-        className="absolute left-6 top-6 text-white text-xl font-semibold hover:text-gray-200 transition"
-        aria-label="Close"
-      >
-        close {/* This is the word "close" in lowercase */}
-      </button>
+    <section className="bg-blue-600 bg-[url('https://i.pinimg.com/originals/47/f6/9b/47f69bc96c7b16f0429eca8f36eeca06.gif')] bg-cover bg-center py-12 px-6 text-center text-white relative">
+      
+      <a href="/" className="absolute top-4 left-4 bg-black text-white text-3xl p-4 rounded-full shadow-md hover:bg-gray-300 transition-all">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M15 5L7 12L15 19" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</a>
 
       <div className="max-w-4xl mx-auto">
         <h2 className="text-5xl font-extrabold font-serif mb-4">About Us</h2>

@@ -15,6 +15,7 @@ import Profile from './assets/pages/Profile.jsx';
 import ManageReservations from './assets/pages/ManageReservation.jsx';
 import StaffDashboard from './assets/pages/StaffDashboard.jsx';
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin-room-availability" element={<AdminRoomAvailability />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/staff-dashboard" element={<StaffDashboard />} />
+
       </Routes>
     </Router>
   </StrictMode>,
