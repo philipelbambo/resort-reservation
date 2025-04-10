@@ -38,11 +38,11 @@ const AdminRoomAvailability = () => {
   return (
     <div className=" p-6 bg-white rounded-lg shadow-md">
       <Header />
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-3">
+      <div className="flex h-full w-full gap-7">
+        <div className="">
           <Sidemenu />
         </div>
-        <div className="col-span-9">
+        <div className="w-full">
             <Breadcrumb title="" links={breadcrumbLinks} />
             <h2 className="text-xl font-semibold mb-4">Room Availability</h2>
             <div className="flex space-x-4 mb-4">

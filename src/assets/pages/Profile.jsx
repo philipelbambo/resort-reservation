@@ -23,11 +23,11 @@ const Profile = () => {
   return (
     <div className="p-8 bg-white shadow-md rounded-lg max-w-full mx-auto mt-10">
             <Header />
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-3">
+      <div className="flex w-full h-full gap-7">
+        <div className="">
           <Sidemenu />
         </div>
-        <div className="col-span-9">
+        <div className="w-full">
           <Breadcrumb title="" links={breadcrumbLinks} />
           <div className='w-full flex flex-col items-center justify-center mt-30'>
             <img

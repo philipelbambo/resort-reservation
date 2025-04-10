@@ -75,11 +75,11 @@ const ManageReservations = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-5">
       <Header />  
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-3">
+      <div className="flex h-full w-full gap-8">
+        <div className="">
           <Sidemenu />
         </div>
-        <div className="col-span-9">
+        <div className="w-full">
           <Breadcrumb title="" links={breadcrumbLinks} />
           <div className="mt-10">
             <h3 className="text-lg font-semibold mb-4">Reservations List</h3>
