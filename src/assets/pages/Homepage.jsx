@@ -94,7 +94,7 @@ const Homepage = () => {
           alt="Beautiful resort with pool at sunset"
           className="w-full h-[700px] object-cover"
           height="800"
-          src="https://i.pinimg.com/originals/47/f6/9b/47f69bc96c7b16f0429eca8f36eeca06.gif"
+          src=" https://i.pinimg.com/originals/0b/46/94/0b4694c4bae13b92f07ef13a2e146eec.gif "
           width="1920"
         />
         <div className="absolute inset-0 bg-black opacity-50"></div>

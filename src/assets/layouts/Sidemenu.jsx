@@ -42,18 +42,18 @@ const Sidemenu = () => {
   };
 
   return (
-    <aside className={`h-full ${isCollapsed ? 'w-[80px]' : 'w-[400px]'} bg-gradient-to-b from-[#4e4f86] via-[#a7abe6] via-[#6488ff] to-[#375792] min-h-screen rounded-3xl shadow-lg p-[20px] text-[20px] transition-all duration-300`}>
+    <aside className={`h-full ${isCollapsed ? 'w-[80px]' : 'w-[300px]'} bg-gradient-to-b from-[#4e4f86] via-[#754588] via-[#798dcc] to-[#d468b0] min-h-screen rounded-3xl shadow-lg p-[20px] text-[20px] transition-all duration-300`}>
+      <div className='flex justify-end w-full mt-1'> {/* Moved the Menu component here */}
+        <Menu
+          size={30}
+          className='cursor-pointer hover:text-blue-400'
+          onClick={toggleSidebar}
+        />
+      </div>
       <div className={`p-5 border-b border-sky-200 flex flex-col items-center relative ${isCollapsed ? 'px-2' : ''}`}>
-        <div className='flex justify-end w-full'>
-          <Menu 
-            size={30} 
-            className='cursor-pointer hover:text-blue-400' 
-            onClick={toggleSidebar}
-          />
-        </div>
         {!isCollapsed && (
           <>
-            <div className="relative w-40 h-40" onClick={handleProfilePictureClick}>
+            <div className="relative w-20 h-20" onClick={handleProfilePictureClick}>
               <img
                 src={profilePicture}
                 alt="Profile Picture"
@@ -69,22 +69,18 @@ const Sidemenu = () => {
               />
             </div>
             <div className="text-center mt-2">
-              <h2 className="text-xl font-bold text-white">Rene Ociones</h2>
-              <p className="text-sm text-white">Bio: Im the owner of the fish farm I can eat ten milk
-                                                 fish even Im full Because thats my favorite food ~Moymoy.</p>
-              <p className="text-sm text-white">Gender: Male</p>
-            </div>
+                <p className="text-sm text-white font-[cursive]">Admin</p>
+           </div>
+
           </>
         )}
       </div>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></link>
       {!isCollapsed && (
         <div className="text-center text-white mt-5">
-          <h1 className="text-2xl font-bold">Resort Management</h1>
-          <p className="text-sm">Welcome Admin</p>
         </div>
       )}
-      <nav className="mt-15">
+      <nav className="mt-9">
         <ul className="space-y-4">
           <li>
             <Link

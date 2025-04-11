@@ -250,7 +250,7 @@ const StaffDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen bg-sky-200 text-gray-900">
+    <div className="flex h-screen bg-pink-200 text-gray-900">
       {/* Loading Overlay */}
       {isLoading && (
         <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
@@ -262,13 +262,13 @@ const StaffDashboard = () => {
       )}
 
       {/* Sidebar */}
-      <div className="h-full  bg-sky-200 p-4 shadow-lg flex flex-col items-center">
+      <div className="h-full bg-pink-200 p-4 shadow-lg flex flex-col items-center">
         {/* Profile Picture */}
         <div className="mb-6 flex items-center justify-center border-b-2 border-black pb-3 relative">
           <img
             src="https://cdn.dribbble.com/userupload/11076335/file/original-991912ab2ec877a6ca29ed851a2c2088.jpg?resize=400x0"
             alt="Profile"
-            className="h-40 w-40 rounded-full cursor-pointer"
+            className="h-20 w-20 rounded-full cursor-pointer"
             onClick={() => document.getElementById('profileInput').click()}
           />
           <input
@@ -279,7 +279,7 @@ const StaffDashboard = () => {
             onChange={handleProfilePictureChange}
           />
           <div className="absolute bottom-0 left-0 bg-black rounded-full p-1 shadow-md cursor-pointer">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
             </svg>
           </div>

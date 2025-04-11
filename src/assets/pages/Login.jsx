@@ -59,7 +59,7 @@ const LoginPage = () => {
   return (
     <div
       className="flex min-h-screen items-center justify-center p-6 bg-cover bg-center"
-      style={{ backgroundImage: "url('https://i.pinimg.com/originals/47/f6/9b/47f69bc96c7b16f0429eca8f36eeca06.gif')" }}
+      style={{ backgroundImage: "url(' https://i.pinimg.com/originals/0b/46/94/0b4694c4bae13b92f07ef13a2e146eec.gif ')" }}
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
