@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa'; // Importing a search icon from React
 
 const Breadcrumb = ({ title, links }) => {
   return (
-    <div className="bg-gradient-to-r from-blue-900  to-[#f388dc] p-4 rounded-lg shadow-md mb-4 w-full max-h-full mx-auto">
+    <div className="bg-gradient-to-r from-blue-900  to-[#942e6d] p-4 rounded-lg shadow-md mb-4 w-full max-h-full mx-auto">
       <nav className="text-md text-white flex items-center gap-x-4">
         {links.map((link, index) => (
           <span key={index} className="flex items-center">
