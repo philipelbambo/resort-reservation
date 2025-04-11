@@ -55,7 +55,7 @@ const Sidemenu = () => {
       <div className={`p-5 border-b border-sky-200 flex flex-col items-center relative ${isCollapsed ? 'px-2' : ''}`}>
         {!isCollapsed && (
           <>
-            <div className="relative w-20 h-20" onClick={handleProfilePictureClick}>
+            <div className="relative w-30 h-30" onClick={handleProfilePictureClick}>
               <img
                 src={profilePicture}
                 alt="Profile Picture"

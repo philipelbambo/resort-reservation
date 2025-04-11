@@ -250,7 +250,7 @@ const StaffDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen bg-pink-200 text-gray-900">
+    <div className="flex h-full bg-pink-200 text-gray-900">
       {/* Loading Overlay */}
       {isLoading && (
         <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
@@ -268,7 +268,7 @@ const StaffDashboard = () => {
           <img
             src="https://cdn.dribbble.com/userupload/11076335/file/original-991912ab2ec877a6ca29ed851a2c2088.jpg?resize=400x0"
             alt="Profile"
-            className="h-20 w-20 rounded-full cursor-pointer"
+            className="h-30 w-30 rounded-full cursor-pointer"
             onClick={() => document.getElementById('profileInput').click()}
           />
           <input
