@@ -47,11 +47,11 @@ const AdminCustomerPayment = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-5">
         <Header />
-        <div className="grid grid-cols-12 gap-6">
-            <div className="col-span-3">
+        <div className="flex w-full h-full gap-7">
+            <div className="">
                 <Sidemenu />
             </div>
-            <div className="col-span-9">
+            <div className="w-full">
                 <Breadcrumb title="" links={breadcrumbLinks} />
                 
 

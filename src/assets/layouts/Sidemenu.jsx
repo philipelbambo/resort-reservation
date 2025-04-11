@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 
 const Sidemenu = () => {
@@ -10,6 +10,8 @@ const Sidemenu = () => {
     "https://cdn.dribbble.com/userupload/11076335/file/original-991912ab2ec877a6ca29ed851a2c2088.jpg?resize=400x0"
   );
   const navigate = useNavigate();
+
+  const location = useLocation();
 
   const toggleSettings = () => {
     setIsSettingsOpen(!isSettingsOpen);
@@ -85,7 +87,8 @@ const Sidemenu = () => {
           <li>
             <Link
               to="/dashboard"
-              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 text-white ${isCollapsed ? 'flex justify-center' : ''}`}
+              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 ${isCollapsed ? 'flex justify-center' : ''}
+                        ${location.pathname == '/dashboard' ? 'bg-sky-200 text-sky-800' : 'text-white'}`}
             >
               <button className={`w-full text-left ${isCollapsed ? 'flex justify-center' : ''}`}>
                 <i className="fas fa-chart-line"></i> {!isCollapsed && 'Dashboard'}
@@ -95,7 +98,8 @@ const Sidemenu = () => {
           <li>
             <Link
               to="/manage-reservations"
-              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 text-white ${isCollapsed ? 'flex justify-center' : ''}`}
+              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 ${isCollapsed ? 'flex justify-center' : ''}
+                          ${location.pathname == '/manage-reservations' ? 'bg-sky-200 text-sky-800' : 'text-white'}`}
             >
               <button className={`w-full text-left ${isCollapsed ? 'flex justify-center' : ''}`}>
                 <i className="fas fa-calendar-alt"></i> {!isCollapsed && 'Manage Reservation'}
@@ -105,7 +109,8 @@ const Sidemenu = () => {
           <li>
             <Link
               to="/admin-payment-dashboard"
-              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 text-white ${isCollapsed ? 'flex justify-center' : ''}`}
+              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 ${isCollapsed ? 'flex justify-center' : ''}
+                          ${location.pathname == '/admin-payment-dashboard' ? 'bg-sky-200 text-sky-800' : 'text-white'}`}
             >
               <button className={`w-full text-left ${isCollapsed ? 'flex justify-center' : ''}`}>
                 <i className="fas fa-credit-card"></i> {!isCollapsed && 'Customer Payment'}
@@ -115,7 +120,8 @@ const Sidemenu = () => {
           <li>
             <Link
               to="/admin-room-availability"
-              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 text-white ${isCollapsed ? 'flex justify-center' : ''}`}
+              className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 ${isCollapsed ? 'flex justify-center' : ''}
+                          ${location.pathname == '/admin-room-availability' ? 'bg-sky-200 text-sky-800' : 'text-white'}`}
             >
               <button className={`w-full text-left ${isCollapsed ? 'flex justify-center' : ''}`}>
                 <i className="fas fa-door-open"></i> {!isCollapsed && 'Room Availability'}
@@ -134,7 +140,8 @@ const Sidemenu = () => {
                 <li>
                   <Link
                     to="/profile"
-                    className="block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300 text-white"
+                    className={`block p-5 hover:bg-sky-200 hover:text-sky-800 rounded-lg transition duration-300
+                                ${location.pathname == '/profile' ? 'bg-sky-200 text-sky-800' : 'text-white'}`}
                   >
                     <i className="fas fa-user"></i> Profile
                   </Link>
