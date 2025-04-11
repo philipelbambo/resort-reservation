@@ -21,7 +21,7 @@ const Breadcrumb = ({ title, links }) => {
       </nav>
 
       {/* Search Bar with Icon */}
-      <div className="mt-4 relative">
+      <div className="mt-0 relative">
         <input
           type="text"
           placeholder="Search..."

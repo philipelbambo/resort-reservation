@@ -44,7 +44,7 @@ const Sidemenu = () => {
   };
 
   return (
-    <aside className={`h-full ${isCollapsed ? 'w-[80px]' : 'w-[300px]'} bg-gradient-to-b from-[#4e4f86] via-[#754588] via-[#798dcc] to-[#d468b0] min-h-screen rounded-3xl shadow-lg p-[20px] text-[20px] transition-all duration-300`}>
+    <aside className={`h-full ${isCollapsed ? 'w-[80px]' : 'w-[300px]'} bg-gradient-to-b from-[#4e4f86] via-[#754588] via-[#798dcc] to-[#d468b0] min-h-screen rounded-lg shadow-lg p-[20px] text-[20px] transition-all duration-300`}>
       <div className='flex justify-end w-full mt-1'> {/* Moved the Menu component here */}
         <Menu
           size={30}

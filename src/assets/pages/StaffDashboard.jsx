@@ -250,7 +250,7 @@ const StaffDashboard = () => {
   };
 
   return (
-    <div className="flex h-full bg-pink-200 text-gray-900">
+    <div className="flex h-full rounded-lg bg-pink-200 text-gray-900">
       {/* Loading Overlay */}
       {isLoading && (
         <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
@@ -262,7 +262,7 @@ const StaffDashboard = () => {
       )}
 
       {/* Sidebar */}
-      <div className="h-full bg-pink-200 p-4 shadow-lg flex flex-col items-center">
+      <div className=" rounded-lg bg-pink-300 p-4  shadow-lg flex flex-col items-center">
         {/* Profile Picture */}
         <div className="mb-6 flex items-center justify-center border-b-2 border-black pb-3 relative">
           <img

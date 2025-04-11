@@ -56,7 +56,7 @@ const AdminCustomerPayment = () => {
                 
 
                 <p className="text-xl">
-                    Total Revenue: <span className="text-green-600 font-bold">Php {totalRevenue}</span>
+                    Total Revenue: <span className="text-green-700 font-bold">Php {totalRevenue}</span>
                 </p>
                 <p className="text-xl mb-6">
                     Pending Payments: <span className="text-yellow-600 font-bold">Php {pendingAmount}</span>
@@ -111,7 +111,7 @@ const AdminCustomerPayment = () => {
                         <td className="border border-gray-300 p-3">
                             <span
                             className={`px-3 py-2 rounded text-white text-lg ${
-                                p.status === "Paid" ? "bg-green-500" : "bg-yellow-500"
+                                p.status === "Paid" ? "bg-green-700" : "bg-yellow-600"
                             }`}
                             >
                             {p.status}
@@ -130,7 +130,7 @@ const AdminCustomerPayment = () => {
                             {p.status === "Pending" && (
                             <button
                                 onClick={() => handleConfirm(p.id)}
-                                className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded text-lg"
+                                className="bg-blue-700 hover:bg-blue-700 text-white px-4 py-2 rounded text-lg"
                             >
                                 Confirm
                             </button>

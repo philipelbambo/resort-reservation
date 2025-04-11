@@ -303,7 +303,7 @@ const RoomView = () => {
             className="reserved-area"
             x="50"
             y="70"
-            fontSize="27"
+            fontSize="26"
             fontFamily="'Brush', cursive"
             fill="Yellow"
             textAnchor="middle"
