@@ -468,7 +468,7 @@ const RoomView = () => {
                                                     onClick={() => handleUnselectCottage(cottage.id)}
                                                     className="w-full mt-2 p-2 rounded-lg bg-red-600 text-white font-semibold transition-all hover:bg-red-700 text-sm"
                                                 >
-                                                    Unselect Cottage
+                                                    Unselect
                                                 </button>
                                             )}
                                         </div>

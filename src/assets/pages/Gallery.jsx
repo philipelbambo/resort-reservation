@@ -26,7 +26,7 @@ const Gallery = () => {
     <section
       className="bg-blue-700 py-12 px-6 text-center text-black relative"
       style={{
-        backgroundImage: 'url("https://i.pinimg.com/originals/47/f6/9b/47f69bc96c7b16f0429eca8f36eeca06.gif")',
+        backgroundImage: 'url("https://i.pinimg.com/originals/0b/46/94/0b4694c4bae13b92f07ef13a2e146eec.gif")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

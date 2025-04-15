@@ -12,7 +12,7 @@ const ResortContact = () => {
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Image with Blur */}
       <div
-        className="absolute inset-0 bg-[url('https://i.pinimg.com/originals/47/f6/9b/47f69bc96c7b16f0429eca8f36eeca06.gif')] bg-cover bg-center blur-sm"
+        className="absolute inset-0 bg-[url('https://i.pinimg.com/originals/0b/46/94/0b4694c4bae13b92f07ef13a2e146eec.gif')] bg-cover bg-center blur-sm"
       ></div>
 
       {/* Semi-transparent overlay (optional, darkens the image) */}
