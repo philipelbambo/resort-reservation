@@ -36,7 +36,8 @@ const RoomView = () => {
     const [successMessage, setSuccessMessage] = useState("");
     const [showReceipt, setShowReceipt] = useState(false);
     const [receiptDetails, setReceiptDetails] = useState(null);
-    const [daysOfStay, setDaysOfStay] = useState(1);
+    const [checkInDate, setCheckInDate] = useState("");
+    const [checkOutDate, setCheckOutDate] = useState("");
     const [showCottageSelection, setShowCottageSelection] = useState(false);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -44,13 +45,22 @@ const RoomView = () => {
 
     useEffect(() => {
         const calculateTotalPrice = () => {
+            const daysOfStay = calculateDaysOfStay(checkInDate, checkOutDate);
             const roomsTotal = selectedRooms.reduce((acc, room) => acc + room.price * daysOfStay, 0);
             const cottagesTotal = selectedCottages.reduce((acc, cottage) => acc + cottage.price * daysOfStay, 0);
             setTotalPrice(roomsTotal + cottagesTotal);
         };
 
         calculateTotalPrice();
-    }, [selectedRooms, selectedCottages, daysOfStay]);
+    }, [selectedRooms, selectedCottages, checkInDate, checkOutDate]);
+
+    const calculateDaysOfStay = (checkIn, checkOut) => {
+        if (!checkIn || !checkOut) return 0;
+        const checkInDate = new Date(checkIn);
+        const checkOutDate = new Date(checkOut);
+        const timeDifference = checkOutDate.getTime() - checkInDate.getTime();
+        return Math.ceil(timeDifference / (1000 * 3600 * 24));
+    };
 
     const handleRoomSelection = (room) => {
         if (room.available > 0) {
@@ -93,7 +103,7 @@ const RoomView = () => {
     const handleReservation = (e) => {
         e.preventDefault();
 
-        if (!firstName || !lastName || !contactNumber || !email || !paymentMethod) {
+        if (!firstName || !lastName || !contactNumber || !email || !paymentMethod || !checkInDate || !checkOutDate) {
             setError("⚠️ Please fill in all fields and select a payment method.");
             return;
         }
@@ -105,6 +115,12 @@ const RoomView = () => {
 
         if (selectedRooms.length === 0) {
             setError("⚠️ Please select at least one room.");
+            return;
+        }
+
+        const daysOfStay = calculateDaysOfStay(checkInDate, checkOutDate);
+        if (daysOfStay <= 0) {
+            setError("Invalid check-in or check-out date.");
             return;
         }
 
@@ -129,6 +145,8 @@ const RoomView = () => {
             bookingId: Math.floor(Math.random() * 1000000),
             date: new Date().toLocaleDateString(),
             totalPrice,
+            checkInDate,
+            checkOutDate,
             daysOfStay,
         };
 
@@ -148,7 +166,8 @@ const RoomView = () => {
             setEmail("");
             setPaymentMethod("");
             setNoCottageNeeded(false);
-            setDaysOfStay(1);
+            setCheckInDate("");
+            setCheckOutDate("");
             setShowReceipt(false);
             setShowCottageSelection(false); // Hide cottage selection after submission
         }, 5000);
@@ -289,42 +308,41 @@ const RoomView = () => {
             </div>
 
             <button
-    onClick={handleContinueToCottage}
-    className="fixed bottom-4 right-4 transition-all rounded-2xl fixed-arrow-button hover:scale-110 hover:bg-900"
->
-    <svg
-        width="100"
-        height="90"
-        viewBox="0 0 100 100"
-        xmlns="http://www.w3.org/2000/svg"
-    >
-        {/* Text */}
-        <text
-            className="reserved-area"
-            x="50"
-            y="70"
-            fontSize="26"
-            fontFamily="'Brush', cursive"
-            fill="Yellow"
-            textAnchor="middle"
-            dominantBaseline="middle"
-        >
-            Reserved
-        </text>
+                onClick={handleContinueToCottage}
+                className="fixed bottom-4 right-4 transition-all rounded-2xl fixed-arrow-button hover:scale-110 hover:bg-900"
+            >
+                <svg
+                    width="100"
+                    height="90"
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    {/* Text */}
+                    <text
+                        className="reserved-area"
+                        x="50"
+                        y="70"
+                        fontSize="26"
+                        fontFamily="'Brush', cursive"
+                        fill="Yellow"
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                    >
+                        Reserved
+                    </text>
 
-        {/* Arrow Image (must be hosted or base64) */}
-        <image
-            className="hover:opacity-75"
-            href="https://cdn-icons-png.flaticon.com/512/3031/3031716.png"
-            x="30"
-            y="70"
-            width="40"
-            height="40"
-            style={{ filter: 'brightness(0) saturate(100%) invert(77%) sepia(93%) saturate(376%) hue-rotate(3deg) brightness(94%) contrast(89%)' }}
-        />
-    </svg>
-</button>
-
+                    {/* Arrow Image (must be hosted or base64) */}
+                    <image
+                        className="hover:opacity-75"
+                        href="https://cdn-icons-png.flaticon.com/512/3031/3031716.png"
+                        x="30"
+                        y="70"
+                        width="40"
+                        height="40"
+                        style={{ filter: 'brightness(0) saturate(100%) invert(77%) sepia(93%) saturate(376%) hue-rotate(3deg) brightness(94%) contrast(89%)' }}
+                    />
+                </svg>
+            </button>
 
             {showCottageSelection && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-[url('')] bg-opacity-50 backdrop-blur-sm">
@@ -517,15 +535,24 @@ const RoomView = () => {
                             </div>
                             <div>
                                 <label className="block text-gray-700 font-medium mb-2">
-                                    Days of Stay
+                                    Check-In Date
                                 </label>
                                 <input
-                                    type="number"
+                                    type="date"
                                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                    placeholder="Enter number of days"
-                                    value={daysOfStay}
-                                    onChange={(e) => setDaysOfStay(Number(e.target.value))}
-                                    min="1"
+                                    value={checkInDate}
+                                    onChange={(e) => setCheckInDate(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-gray-700 font-medium mb-2">
+                                    Check-Out Date
+                                </label>
+                                <input
+                                    type="date"
+                                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    value={checkOutDate}
+                                    onChange={(e) => setCheckOutDate(e.target.value)}
                                 />
                             </div>
                             <div>
@@ -597,6 +624,8 @@ const RoomView = () => {
                             <p><strong>Payment Method:</strong> {receiptDetails.paymentMethod}</p>
                             <p><strong>Total Price:</strong> ₱{receiptDetails.totalPrice}</p>
                             <p><strong>Date:</strong> {receiptDetails.date}</p>
+                            <p><strong>Check-In Date:</strong> {receiptDetails.checkInDate}</p>
+                            <p><strong>Check-Out Date:</strong> {receiptDetails.checkOutDate}</p>
                             <p><strong>Days of Stay:</strong> {receiptDetails.daysOfStay}</p>
                         </div>
                         <p className="text-green-500 text-sm text-center mt-6">

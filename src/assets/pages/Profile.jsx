@@ -8,7 +8,6 @@ const Profile = () => {
   const adminProfile = {
     profilePicture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRro1CrNvxykxDQFNv4kgIOYO3VghtaAld4sUy2_-atrgxnwmTQFwpIBsKLc7GsQWJi3hc&usqp=CAU', // Update with actual path or URL
     firstName: 'Moymoy',
-    lastName: 'Totoro',
     email: 'moymoy@gmail.com',
     gender: 'Male',
     bio: 'Im the owner of the fish farm I can eat ten milk fish even Im full Because thats my favorite food ~Moymoy.',
