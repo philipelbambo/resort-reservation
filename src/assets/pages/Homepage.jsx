@@ -149,7 +149,7 @@ const Homepage = () => {
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="w-full h-64 object-cover rounded-lg shadow-xl"
+                  className="w-full h-64 object-cover rounded-lg shadow-xl hover:scale-105 hover:shadow-2xl transition-transform duration-300"
                 />
               </div>
               <div className="w-full md:w-1/2">

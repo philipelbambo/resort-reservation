@@ -282,7 +282,7 @@ const RoomView = () => {
                                 className={`w-full mt-2 p-2 rounded-lg ${
                                     room.available > 0
                                         ? selectedRooms.some((sr) => sr.id === room.id)
-                                            ? "bg-green-800 hover:bg-green-400"
+                                            ? "bg-sky-900 hover:bg-green-400"
                                             : "bg-orange-950 hover:bg-sky-900"
                                         : "bg-gray-400 cursor-not-allowed"
                                 } text-white font-semibold transition-all text-sm`}
@@ -299,29 +299,30 @@ const RoomView = () => {
                                     onClick={() => handleUnselectRoom(room.id)}
                                     className="w-full mt-2 p-2 rounded-lg bg-red-950 text-white font-semibold transition-all hover:bg-red-700 text-sm"
                                 >
-                                    Unselect Room
+                                    Unselect
                                 </button>
                             )}
                         </div>
                     </div>
                 ))}
-            </div>
+            </div> 
 
+            <div className="w-full flex justify-end mt-[-80px]">
             <button
                 onClick={handleContinueToCottage}
-                className="fixed bottom-4 right-4 transition-all rounded-2xl fixed-arrow-button hover:scale-110 hover:bg-900"
+                className="bottom-4 right-4 transition-all rounded-2xl fixed-arrow-button hover:scale-110 hover:bg-900"
             >
                 <svg
-                    width="100"
-                    height="90"
+                    width="200"
+                    height="100"
                     viewBox="0 0 100 100"
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     {/* Text */}
                     <text
                         className="reserved-area"
-                        x="50"
-                        y="70"
+                        x="70"
+                        y="50"
                         fontSize="26"
                         fontFamily="'Brush', cursive"
                         fill="Yellow"
@@ -336,13 +337,15 @@ const RoomView = () => {
                         className="hover:opacity-75"
                         href="https://cdn-icons-png.flaticon.com/512/3031/3031716.png"
                         x="30"
-                        y="70"
-                        width="40"
+                        y="50"
+                        width="90"
                         height="40"
                         style={{ filter: 'brightness(0) saturate(100%) invert(77%) sepia(93%) saturate(376%) hue-rotate(3deg) brightness(94%) contrast(89%)' }}
                     />
                 </svg>
             </button>
+            </div>
+          
 
             {showCottageSelection && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-[url('')] bg-opacity-50 backdrop-blur-sm">

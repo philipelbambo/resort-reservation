@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../layouts/Header';
 import Sidemenu from '../layouts/Sidemenu';
 import Breadcrumb from '../components/Breadcrumbs';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState('Overview');
@@ -19,12 +19,12 @@ const AdminDashboard = () => {
   const pricePerGuest = 100;
 
   const [monthlyData, setMonthlyData] = useState([
-    { month: 'January', totalGuests: 120, revenue: 12000, occupancyRate: 85 },
-    { month: 'February', totalGuests: 130, revenue: 1000, occupancyRate: 88 },
+    { month: 'January', totalGuests: 120, revenue: 22000, occupancyRate: 85 },
+    { month: 'February', totalGuests: 400, revenue: 1000, occupancyRate: 88 },
     { month: 'March', totalGuests: 140, revenue: 13000, occupancyRate: 90 },
     { month: 'April', totalGuests: 150, revenue: 15000, occupancyRate: 92 },
     { month: 'May', totalGuests: 160, revenue: 900, occupancyRate: 94 },
-    { month: 'June', totalGuests: 170, revenue: 17000, occupancyRate: 95 },
+    { month: 'June', totalGuests: 170, revenue: 5000, occupancyRate: 100 },
     { month: 'July', totalGuests: 180, revenue: 18000, occupancyRate: 96 },
     { month: 'August', totalGuests: 90, revenue: 19000, occupancyRate: 97 },
     { month: 'September', totalGuests: 200, revenue: 20000, occupancyRate: 98 },
@@ -96,74 +96,63 @@ const AdminDashboard = () => {
             <div className="mt-10">
               <h3 className="text-lg font-semibold mb-4">Monthly Resort Data</h3>
               <ResponsiveContainer width="100%" height={400}>
-                <LineChart data={monthlyData}>
-                  <defs>
-                    <linearGradient id="colorGuests" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                      <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-                    </linearGradient>
-                    <linearGradient id="colorOccupancy" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8} />
-                      <stop offset="95%" stopColor="#ffc658" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
+                <AreaChart data={monthlyData}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="month" tick={{ fill: '#666' }} onClick={(data) => handleMonthClick(data.value)} />
                   <YAxis tick={{ fill: '#666' }} />
                   <Tooltip />
                   <Legend />
-                  <Line
+                  <Area
                     type="monotone"
                     dataKey="totalGuests"
-                    stroke="url(#colorGuests)"
+                    stroke="#D8BFD8"
+                    fill="#D8BFD8"
                     strokeWidth={3}
                     activeDot={{ r: 8 }}
                   />
-                  <Line
+                  <Area
                     type="monotone"
                     dataKey="revenue"
-                    stroke="red"
+                    stroke="#D8BFD8"
+                    fill="#D8BFD8"
                     strokeWidth={3}
                   />
-                  <Line
+                  <Area
                     type="monotone"
                     dataKey="occupancyRate"
-                    stroke="url(#colorOccupancy)"
+                    stroke="#D8BFD8"
+                    fill="#D8BFD8"
                     strokeWidth={3}
                   />
-                </LineChart>
+                </AreaChart>
               </ResponsiveContainer>
             </div>
             {selectedMonth && (
               <div className="mt-10">
                 <h3 className="text-lg font-semibold mb-4">Weekly New Guests and Revenue for {selectedMonth}</h3>
                 <ResponsiveContainer width="100%" height={400}>
-                  <LineChart data={getWeeklyData(selectedMonth)}>
-                    <defs>
-                      <linearGradient id="colorNewGuests" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
+                  <AreaChart data={getWeeklyData(selectedMonth)}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <XAxis dataKey="day" tick={{ fill: '#666' }} />
                     <YAxis tick={{ fill: '#666' }} />
                     <Tooltip />
                     <Legend />
-                    <Line
+                    <Area
                       type="monotone"
                       dataKey="newGuests"
-                      stroke="url(#colorNewGuests)"
+                      stroke="#D8BFD8"
+                      fill="#D8BFD8"
                       strokeWidth={3}
                       activeDot={{ r: 8 }}
                     />
-                    <Line
+                    <Area
                       type="monotone"
                       dataKey="newRevenue"
-                      stroke="blue"
+                      stroke="#D8BFD8"
+                      fill="#D8BFD8"
                       strokeWidth={3}
                     />
-                  </LineChart>
+                  </AreaChart>
                 </ResponsiveContainer>
               </div>
             )}
