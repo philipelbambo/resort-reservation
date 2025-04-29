@@ -129,20 +129,20 @@ const ManageReservations = () => {
                         </button>
                         <button
                           onClick={() => handleEditReservation(reservation)}
-                          className="flex-1 p-2 bg-amber-700 text-black rounded-2xl hover:bg-yellow-300"
+                          className="flex-1 p-2 bg-amber-600 text-black rounded-2xl hover:bg-yellow-300"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => handleDeleteReservation(reservation.id)}
-                          className="flex-1 p-2 bg-red-800 text-black rounded-2xl hover:bg-red-300"
+                          className="flex-1 p-2 bg-red-600 text-black rounded-2xl hover:bg-red-300"
                         >
                           Cancel
                         </button>
                         {reservation.status === 'pending' && (
                           <button
                             onClick={() => handleAcceptReservation(reservation.id)}
-                            className="flex-1 p-2 bg-green-700 text-black rounded-2xl hover:bg-green-300"
+                            className="flex-1 p-2 bg-green-800 text-black rounded-2xl hover:bg-green-300"
                           >
                             Accept
                           </button>
