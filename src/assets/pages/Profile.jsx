@@ -20,7 +20,7 @@ const Profile = () => {
   ];
 
   return (
-    <div className="p-8 bg-white shadow-md rounded-lg max-w-full mx-auto mt-10">
+    <div className="p-8 bg-white shadow-md rounded-lg max-w-full mx-auto mt-5">
             <Header />
       <div className="flex w-full h-full gap-7">
         <div className="">

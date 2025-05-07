@@ -1,38 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLock, FaTimes } from "react-icons/fa";
+
+const DynamicIsland = ({ message }) => {
+  return (
+    <div className="dynamic-island bg-black text-white px-4 py-2 rounded-full shadow-lg fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
+      {message}
+    </div>
+  );
+};
 
 const Homepage = ({ user }) => {
   const navigate = useNavigate();
   const [isBooking, setIsBooking] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [islandMessage, setIslandMessage] = useState("");
 
   const isAdmin = user && user.role === 'admin';
 
-  const backgroundImages = [
-    "https://i.pinimg.com/originals/0b/46/94/0b4694c4bae13b92f07ef13a2e146eec.gif",
-    "https://i.pinimg.com/736x/7e/31/39/7e3139628dcf14f1cc53ac5b192877eb.jpg",
-    "https://i.pinimg.com/736x/49/16/6b/49166b20749d2120dc61caaf306ab255.jpg",
-    "https://i.pinimg.com/736x/34/a6/39/34a6399d9d2671b4ff99aa431cc0f6dd.jpg",
-    "https://i.pinimg.com/736x/df/00/cb/df00cb07eab88d0101f37baed85b28da.jpg",
-    "https://i.pinimg.com/736x/fd/2f/f9/fd2ff9f49e6c4f7a25f06878d28aeb5f.jpg"
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [backgroundImages.length]);
+  // Beach resort video URL - you'll need to replace this with your actual video URL
+  const beachVideoUrl = " https://cdn.pixabay.com/video/2023/01/30/148597-794221559_large.mp4   ";
 
   const handleBookNow = () => {
+    setIslandMessage("Booking in progress...");
     setIsBooking(true);
     setTimeout(() => {
       navigate("/book");
       setIsBooking(false);
+      setIslandMessage("");
     }, 1000);
   };
 
@@ -57,8 +53,8 @@ const Homepage = ({ user }) => {
       description: "Enjoy our exclusive stretch of pristine white sand beach with crystal clear waters, perfect for swimming, sunbathing, and water sports.",
       image: "https://cdn.prod.website-files.com/59a30a523e53e400017c4ded/59ca1872b5fc1c000144b77b_delight01.jpg",
       interiorImages: [
-        " https://images.dwell.com/photos/6063391372700811264/7005940649537077248/large.jpg ",
-        " https://www.vmcdn.ca/f/files/timminstoday/spotlight-images/diggs-dwellings/adobestock_178086089.jpeg;w=960 "
+        "https://images.dwell.com/photos/6063391372700811264/7005940649537077248/large.jpg",
+        "https://www.vmcdn.ca/f/files/timminstoday/spotlight-images/diggs-dwellings/adobestock_178086089.jpeg;w=960"
       ]
     },
     {
@@ -77,8 +73,8 @@ const Homepage = ({ user }) => {
       description: "Rejuvenate at our full-service spa offering massages, facials, and holistic treatments in a serene tropical setting.",
       image: "https://media-cdn.tripadvisor.com/media/photo-s/01/8d/dd/99/can-t-help-feeling-introspecti.jpg",
       interiorImages: [
-        " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU92rOnWqD24RdRqSNt0sS5wakPk7uPaOKlw&s ",
-        " https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/d3/74/1e/pasacao-beach.jpg?w=200&h=-1&s=1 "
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU92rOnWqD24RdRqSNt0sS5wakPk7uPaOKlw&s",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/d3/74/1e/pasacao-beach.jpg?w=200&h=-1&s=1"
       ]
     },
     {
@@ -110,6 +106,46 @@ const Homepage = ({ user }) => {
         "https://media.architecturaldigest.com/photos/57361b001341a7ff7bc5e70a/master/w_320%2Cc_limit/indoor-outdoor-04.jpg",
         "https://www.thespruce.com/thmb/y3nXpMGMdaWbpyho4_rIRD2q7z0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/BreezeGiannasio_ChoHome_MeghanBobPhoto_Patio_HR-da69b73215ad46cbbb0be2f795e1bb88.jpg"
       ]
+    },
+    {
+      id: 8,
+      title: "Ocean View Room",
+      description: "Our premier room category, these rooms have a large private balcony with a commanding view of our pool, the beach, and the ocean. Fully air-conditioned with mini-fridge, free WiFi, LED TV, tea/coffee facilities, room safe, and other amenities. Complimentary breakfast included if you book directly.",
+      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      interiorImages: [
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
+      ]
+    },
+    {
+      id: 9,
+      title: "Deluxe Room",
+      description: "Our largest rooms, these rooms are able to accommodate up to 4 adults or 2 adults and 2 children. Both ground floor and 2nd floor rooms are available. Fully air-conditioned with mini-fridge, free WiFi, LED TV, tea/coffee facilities, room safe, and other amenities. Complimentary breakfast included if you book directly.",
+      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      interiorImages: [
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
+      ]
+    },
+    {
+      id: 10,
+      title: "Standard Room",
+      description: "These smaller rooms are comfortable for two adults and are fully air-conditioned with mini-fridge, free WiFi, LED TV, tea/coffee facilities, room safe, and other amenities. Complimentary breakfast included if you book through this website. Both ground floor and 2nd floor rooms are available.",
+      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      interiorImages: [
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
+      ]
+    },
+    {
+      id: 11,
+      title: "Budget Room",
+      description: "Basic double room, newly refurbished and very comfortable for two adults, with full air conditioning, free WiFi, tea/coffee facilities, and other amenities. Complimentary breakfast included if you book directly. The bed is a queen size bed but is not splitable. These rooms are all ground floor, with limited windows.",
+      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      interiorImages: [
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
+      ]
     }
   ];
 
@@ -121,26 +157,19 @@ const Homepage = ({ user }) => {
   return (
     <div className="bg-gray-100">
       <nav className="bg-white shadow-md">
-        <div className="container mx-auto flex justify-between items-center py-5 px-0">
+        <div className="container mx-auto flex justify-between items-center py-5 px-4 relative">
           <div className="text-2xl font-bold">
             <a className="hero-text" href="#">
               <span className="text-black text-4xl">𝒜𝓆𝓊𝒶𝓇𝒾𝓊𝓈 𝐵𝑒𝒶𝒸𝒽</span>
             </a>
           </div>
-          <div className="text-2xl md:flex font-bold space-x-15 font-serif italic">
+          <div className="text-2xl md:flex font-bold space-x-8 font-serif italic">
             <Link className="text-black hover:text-yellow-500" to="/">Home</Link>
             <Link className="text-black hover:text-yellow-500" to="/gallery">Gallery</Link>
             <Link className="text-black hover:text-yellow-500" to="/about">About Us</Link>
             <Link className="text-black hover:text-yellow-500" to="/contact">Contact/Info</Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            />
             {isAdmin && (
               <Link to="/admin" className="text-gray-700 hover:text-yellow-500 group relative">
                 <FaLock size={30} />
@@ -150,19 +179,24 @@ const Homepage = ({ user }) => {
               </Link>
             )}
           </div>
+          {islandMessage && <DynamicIsland message={islandMessage} />}
         </div>
       </nav>
 
+      {/* Video Hero Section */}
       <div className="relative">
-        <img
-          alt="Beautiful resort with pool at sunset"
-          className="w-full h-[700px] object-cover"
-          height="800"
-          src={backgroundImages[currentImageIndex]}
-          width="1920"
-        />
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4">
+        <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
+        <video 
+          className="w-full h-screen object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={beachVideoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 z-20">
           <h1 className="text-4xl md:text-6xl font-bold hero-text animate-fade-in mt-0">
             Aquarius Beach Resort
           </h1>
@@ -240,7 +274,7 @@ const Homepage = ({ user }) => {
       </div>
 
       {selectedRoom && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-white/30 z-50">
           <div className="max-w-4xl w-full p-4 bg-white rounded-lg relative">
             <button
               className="text-black text-2xl absolute top-4 right-4 bg-gray-200 rounded-full p-2"

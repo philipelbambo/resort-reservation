@@ -7,11 +7,10 @@ const StaffDashboard = () => {
   const [reservations, setReservations] = useState([
     { id: 1, name: 'John Doe', email: 'john@example.com', phone: '123-456-7890', checkIn: '2023-10-01', checkOut: '2023-10-05', status: 'Pending', paymentMethod: 'Gcash' },
     { id: 2, name: 'Jane Smith', email: 'jane@example.com', phone: '987-654-3210', checkIn: '2023-10-02', checkOut: '2023-10-06', status: 'Pending', paymentMethod: 'Gcash' },
-    { id: 3, name: 'Alice Johnson', email: 'alice@example.com', phone: '555-555-5555', checkIn: '2023-10-03', checkOut: '2023-10-07', status: 'Accepted', paymentMethod: 'Cash' },
-    { id: 4, name: 'Sosas Jhonvelle', email: 'sosas@gmail.com', phone: '123-456-7890', checkIn: '2023-10-01', checkOut: '2023-10-05', status: 'Pending', paymentMethod: 'Gcash' },
-    { id: 5, name: 'Kent Dinlay', email: 'kent@gmail.com', phone: '987-654-3210', checkIn: '2023-10-02', checkOut: '2023-10-06', status: 'Accepted', paymentMethod: 'Cash' },
-    { id: 6, name: 'Philip Elbambo', email: 'elbambo@gmail.com', phone: '555-555-5555', checkIn: '2023-10-03', checkOut: '2023-10-07', status: 'Pending', paymentMethod: 'Gcash' },
-    { id: 7, name: 'Emily Davis', email: 'emily@example.com', phone: '123-456-7890', checkIn: '2023-10-04', checkOut: '2023-10-08', status: 'Pending', paymentMethod: 'Gcash' },
+    { id: 3, name: 'Sosas Johnville', email: 'sosas@example.com', phone: '123-456-7890', checkIn: '2023-10-01', checkOut: '2023-10-05', status: 'Pending', paymentMethod: 'Gcash' },
+    { id: 4, name: 'Kent Dinlay', email: 'kent@example.com', phone: '987-654-3210', checkIn: '2023-10-02', checkOut: '2023-10-06', status: 'Accepted', paymentMethod: 'Cash' },
+    { id: 5, name: 'Philip Elbambo', email: 'philip@example.com', phone: '555-555-5555', checkIn: '2023-10-03', checkOut: '2023-10-07', status: 'Pending', paymentMethod: 'Gcash' },
+    // Add more reservations as needed
   ]);
 
   const handleLinkClick = (link) => {
@@ -55,146 +54,148 @@ const StaffDashboard = () => {
         return (
           <div>
             <h3 className="text-xl font-semibold mb-4">Overview</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Pending Reservations */}
-              <div className="p-4 rounded-lg shadow-lg bg-white">
-                <h4 className="text-lg font-semibold mb-4">Pending Reservations</h4>
-                {reservations.filter(res => res.status === 'Pending').length > 0 ? (
-                  reservations
-                    .filter(res => res.status === 'Pending')
-                    .map(reservation => (
-                      <div key={reservation.id} className="mb-4">
-                        <p className="text-sm font-semibold">{reservation.name}</p>
-                        <p className="text-sm text-gray-500">{reservation.email}</p>
-                        <p className="text-sm text-gray-500">{reservation.phone}</p>
-                        <p className="text-sm">
-                          <span className="font-semibold">Check-in:</span> {reservation.checkIn}
-                        </p>
-                        <p className="text-sm">
-                          <span className="font-semibold">Check-out:</span> {reservation.checkOut}
-                        </p>
-                      </div>
-                    ))
-                ) : (
-                  <p className="text-sm text-gray-500">No pending reservations.</p>
-                )}
-              </div>
 
-              {/* Accepted Reservations */}
-              <div className="p-4 rounded-lg shadow-lg bg-white">
-                <h4 className="text-lg font-semibold mb-4">Accepted Reservations</h4>
-                {reservations.filter(res => res.status === 'Accepted').length > 0 ? (
-                  reservations
-                    .filter(res => res.status === 'Accepted')
-                    .map(reservation => (
-                      <div key={reservation.id} className="mb-4">
-                        <p className="text-sm font-semibold flex items-center">
-                          <span className="mr-2">{reservation.name}</span>
-                          <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                          </svg>
-                        </p>
-                        <p className="text-sm text-gray-500">{reservation.email}</p>
-                        <p className="text-sm text-gray-500">{reservation.phone}</p>
-                        <p className="text-sm">
-                          <span className="font-semibold">Check-in:</span> {reservation.checkIn}
-                        </p>
-                        <p className="text-sm">
-                          <span className="font-semibold">Check-out:</span> {reservation.checkOut}
-                        </p>
-                      </div>
-                    ))
-                ) : (
-                  <p className="text-sm text-gray-500">No accepted reservations.</p>
-                )}
+            {/* Pending Reservations Table */}
+            <div className="mb-6">
+              <h4 className="text-lg font-semibold mb-4">Pending Reservations</h4>
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-300">
+                  <thead>
+                    <tr>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Name</th>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Email</th>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Phone</th>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Check-in</th>
+                      <th className="py-2 px-4 border-b border-gray-300">Check-out</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {reservations.filter(res => res.status === 'Pending').map(reservation => (
+                      <tr key={reservation.id} className="border-b border-gray-300">
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.name}</td>
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.email}</td>
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.phone}</td>
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.checkIn}</td>
+                        <td className="py-2 px-4">{reservation.checkOut}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Accepted Reservations Table */}
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Accepted Reservations</h4>
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-300">
+                  <thead>
+                    <tr>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Name</th>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Email</th>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Phone</th>
+                      <th className="py-2 px-4 border-b border-r border-gray-300">Check-in</th>
+                      <th className="py-2 px-4 border-b border-gray-300">Check-out</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {reservations.filter(res => res.status === 'Accepted').map(reservation => (
+                      <tr key={reservation.id} className="border-b border-gray-300">
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.name}</td>
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.email}</td>
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.phone}</td>
+                        <td className="py-2 px-4 border-r border-gray-300">{reservation.checkIn}</td>
+                        <td className="py-2 px-4">{reservation.checkOut}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         );
+
       case 'Reservations':
         return (
           <div>
             <h3 className="text-xl font-semibold mb-4">Reservations</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {reservations.map((reservation) => (
-                <div
-                  key={reservation.id}
-                  className="p-4 rounded-lg shadow-lg bg-white"
-                >
-                  <h4 className="text-lg font-semibold flex items-center">
-                    {reservation.name}
-                    {reservation.status === 'Accepted' && (
-                      <svg className="w-4 h-4 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                    )}
-                  </h4>
-                  <p className="text-sm text-gray-500">{reservation.email}</p>
-                  <p className="text-sm text-gray-500">{reservation.phone}</p>
-                  <div className="mt-4">
-                    <p className="text-sm">
-                      <span className="font-semibold">Check-in:</span> {reservation.checkIn}
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-semibold">Check-out:</span> {reservation.checkOut}
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-semibold">Status:</span> {reservation.status}
-                    </p>
-                    <p className="text-sm">
-                      <span className="font-semibold">Payment Method:</span> {reservation.paymentMethod}
-                    </p>
-                  </div>
-                  <div className="mt-4 flex space-x-2">
-                    {reservation.status === 'Pending' && (
-                      <>
-                        <button
-                          className="text-sm bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600"
-                          onClick={() => handleReservationAction(reservation.id, 'Accepted')}
-                        >
-                          Accept
-                        </button>
-                        <button
-                          className="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
-                          onClick={() => handleReservationAction(reservation.id, 'Pending')}
-                        >
-                          Set as Pending
-                        </button>
-                      </>
-                    )}
-                  </div>
-                </div>
-              ))}
+            <div className=" overflow-x-auto">
+              <table className="min-w-full bg-white border border-gray-300">
+                <thead>
+                  <tr>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Name</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Email</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Phone</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Check-in</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Check-out</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Status</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Payment Method</th>
+                    <th className="py-2 px-4 border-b">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reservations.map((reservation) => (
+                    <tr key={reservation.id} className="border-b border-gray-300">
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.name}</td>
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.email}</td>
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.phone}</td>
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.checkIn}</td>
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.checkOut}</td>
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.status}</td>
+                      <td className="py-2 px-4 border-r border-gray-300">{reservation.paymentMethod}</td>
+                      <td className="py-2 px-4">
+                        {reservation.status === 'Pending' && (
+                          <>
+                            <button
+                              className="text-sm bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 mr-2"
+                              onClick={() => handleReservationAction(reservation.id, 'Accepted')}
+                            >
+                              Accept
+                            </button>
+                            <button
+                              className="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
+                              onClick={() => handleReservationAction(reservation.id, 'Pending')}
+                            >
+                              Set as Pending
+                            </button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         );
+
       case 'Customer Payment':
         return (
           <div>
             <h3 className="text-xl font-semibold mb-4">Customer Payment</h3>
             <div className="overflow-x-auto mb-6">
               <h4 className="text-lg font-semibold mb-4">Gcash Payments</h4>
-              <table className="min-w-full bg-white">
+              <table className="min-w-full bg-white border border-gray-300">
                 <thead>
                   <tr>
-                    <th className="py-2 px-4 border-b">Name</th>
-                    <th className="py-2 px-4 border-b">Email</th>
-                    <th className="py-2 px-4 border-b">Phone</th>
-                    <th className="py-2 px-4 border-b">Check-in</th>
-                    <th className="py-2 px-4 border-b">Check-out</th>
-                    <th className="py-2 px-4 border-b">Status</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Name</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Email</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Phone</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Check-in</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Check-out</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Status</th>
                     <th className="py-2 px-4 border-b">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reservations.filter(res => res.paymentMethod === 'Gcash').map(reservation => (
                     <tr key={reservation.id} className={`${reservation.status === 'Pending' ? 'bg-yellow-100' : ''}`}>
-                      <td className="py-2 px-4 border-b">{reservation.name}</td>
-                      <td className="py-2 px-4 border-b">{reservation.email}</td>
-                      <td className="py-2 px-4 border-b">{reservation.phone}</td>
-                      <td className="py-2 px-4 border-b">{reservation.checkIn}</td>
-                      <td className="py-2 px-4 border-b">{reservation.checkOut}</td>
-                      <td className="py-2 px-4 border-b">{reservation.status}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.name}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.email}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.phone}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.checkIn}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.checkOut}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.status}</td>
                       <td className="py-2 px-4 border-b">
                         {reservation.status === 'Pending' && (
                           <button
@@ -212,30 +213,25 @@ const StaffDashboard = () => {
             </div>
             <div className="overflow-x-auto">
               <h4 className="text-lg font-semibold mb-4">Confirmed Reservations</h4>
-              <table className="min-w-full bg-white">
+              <table className="min-w-full bg-white border border-gray-300">
                 <thead>
                   <tr>
-                    <th className="py-2 px-4 border-b">Name</th>
-                    <th className="py-2 px-4 border-b">Email</th>
-                    <th className="py-2 px-4 border-b">Phone</th>
-                    <th className="py-2 px-4 border-b">Check-in</th>
-                    <th className="py-2 px-4 border-b">Check-out</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Name</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Email</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Phone</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Check-in</th>
+                    <th className="py-2 px-4 border-b border-r border-gray-300">Check-out</th>
                     <th className="py-2 px-4 border-b">Payment Method</th>
                   </tr>
                 </thead>
                 <tbody>
                   {reservations.filter(res => res.status === 'Accepted').map(reservation => (
                     <tr key={reservation.id}>
-                      <td className="py-2 px-4 border-b flex items-center">
-                        <span className="mr-2">{reservation.name}</span>
-                        <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                      </td>
-                      <td className="py-2 px-4 border-b">{reservation.email}</td>
-                      <td className="py-2 px-4 border-b">{reservation.phone}</td>
-                      <td className="py-2 px-4 border-b">{reservation.checkIn}</td>
-                      <td className="py-2 px-4 border-b">{reservation.checkOut}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.name}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.email}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.phone}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.checkIn}</td>
+                      <td className="py-2 px-4 border-b border-r border-gray-300">{reservation.checkOut}</td>
                       <td className="py-2 px-4 border-b">{reservation.paymentMethod}</td>
                     </tr>
                   ))}
@@ -244,13 +240,14 @@ const StaffDashboard = () => {
             </div>
           </div>
         );
+
       default:
         return <p>Welcome to the Staff Dashboard</p>;
     }
   };
 
   return (
-    <div className="flex h-full rounded-lg bg-violet-300 text-gray-900">
+    <div className="flex h-screen w-screen bg-gradient-to-br from-[#383e92] to-[#942e6d] text-gray-900">
       {/* Loading Overlay */}
       {isLoading && (
         <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
@@ -262,7 +259,7 @@ const StaffDashboard = () => {
       )}
 
       {/* Sidebar */}
-      <div className=" rounded-lg bg-violet-200 p-4  shadow-lg flex flex-col items-center">
+      <div className="w-64 bg-gradient-to-br from-[#6268b1] to-[#a55787] p-4 shadow-lg flex flex-col items-center">
         {/* Profile Picture */}
         <div className="mb-6 flex items-center justify-center border-b-2 border-black pb-3 relative">
           <img
@@ -285,10 +282,10 @@ const StaffDashboard = () => {
           </div>
         </div>
 
-        <h2 className="text-2xl font-bold m-6 flex items-center justify-center">Staff Only</h2>
+        <h2 className="text-2xl font-bold mb-6 flex items-center justify-center">Staff Only</h2>
 
         {/* Sidebar Links */}
-        <ul>
+        <ul className="w-full">
           {['Overview', 'Reservations', 'Customer Payment', 'Log Out'].map((link) => (
             <li key={link} className="mb-3">
               <a
@@ -333,9 +330,9 @@ const StaffDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-6 overflow-auto">
         {/* Quick Stats Cards */}
-        <div className="grid grid-cols-3 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <div className="p-4 rounded-lg shadow-lg bg-white">
             <h3 className="text-lg font-semibold">Total Reservations</h3>
             <p className="text-2xl font-bold">{reservations.length}</p>
