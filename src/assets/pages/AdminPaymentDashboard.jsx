@@ -4,17 +4,15 @@ import Sidemenu from "../layouts/Sidemenu";
 import Breadcrumb from "../components/Breadcrumbs";
 
 const paymentsData = [
-    { id: 1, name: "John Doe", email: "john@example.com", amount: 120, status: "Pending", date: "2025-03-20", method: "Gcash" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", amount: 200, status: "Paid", date: "2025-03-18", method: "Gcash" },
-    { id: 3, name: "Michael Lee", email: "michael@example.com", amount: 150, status: "Pending", date: "2025-03-19", method: "Gcash" },
-    { id: 4, name: "Emily Davis", email: "emily@example.com", amount: 300, status: "Paid", date: "2025-03-21", method: "Gcash" },
-    { id: 5, name: "Robert Brown", email: "robert@example.com", amount: 250, status: "Pending", date: "2025-03-22", method: "Gcash" },
-    { id: 6, name: "Sophia Wilson", email: "sophia@example.com", amount: 180, status: "Paid", date: "2025-03-23", method: "Gcash" },
-    { id: 7, name: "James Johnson", email: "james@example.com", amount: 400, status: "Pending", date: "2025-03-24", method: "Gcash" },
-    { id: 8, name: "Olivia Martinez", email: "olivia@example.com", amount: 220, status: "Paid", date: "2025-03-25", method: "Gcash" }, 
+    { id: 1, name: "John Doe", email: "john@example.com", amount: 1200, status: "Pending", date: "2025-03-20", method: "Gcash" },
+    { id: 2, name: "Jane Smith", email: "jane@example.com", amount: 2000, status: "Paid", date: "2025-03-18", method: "Gcash" },
+    { id: 3, name: "Michael Lee", email: "michael@example.com", amount: 13350, status: "Pending", date: "2025-03-19", method: "Gcash" },
+    { id: 4, name: "Emily Davis", email: "emily@example.com", amount: 3000, status: "Paid", date: "2025-03-21", method: "Gcash" },
+    { id: 5, name: "Robert Brown", email: "robert@example.com", amount: 2250, status: "Pending", date: "2025-03-22", method: "Gcash" },
+    { id: 6, name: "Sophia Wilson", email: "sophia@example.com", amount: 1180, status: "Paid", date: "2025-03-23", method: "Gcash" },
+    { id: 7, name: "James Johnson", email: "james@example.com", amount: 4500, status: "Pending", date: "2025-03-24", method: "Gcash" },
+    { id: 8, name: "Olivia Martinez", email: "olivia@example.com", amount: 5220, status: "Paid", date: "2025-03-25", method: "Gcash" },
   ];
-  
-  
 
 const AdminCustomerPayment = () => {
   const [payments, setPayments] = useState(paymentsData);
@@ -30,6 +28,9 @@ const AdminCustomerPayment = () => {
 
   const totalRevenue = payments.reduce((acc, p) => (p.status === "Paid" ? acc + p.amount : acc), 0);
   const pendingAmount = payments.reduce((acc, p) => (p.status === "Pending" ? acc + p.amount : acc), 0);
+
+  const formattedTotalRevenue = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(totalRevenue);
+  const formattedPendingAmount = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(pendingAmount);
 
   const filteredPayments = payments
     .filter((p) =>
@@ -53,13 +54,12 @@ const AdminCustomerPayment = () => {
             </div>
             <div className="w-full">
                 <Breadcrumb title="" links={breadcrumbLinks} />
-                
 
                 <p className="text-xl">
-                    Total Revenue: <span className="text-green-700 font-bold">Php {totalRevenue}</span>
+                    Total Revenue: <span className="text-green-700 font-bold">{formattedTotalRevenue}</span>
                 </p>
                 <p className="text-xl mb-6">
-                    Pending Payments: <span className="text-yellow-600 font-bold">Php {pendingAmount}</span>
+                    Pending Payments: <span className="text-yellow-600 font-bold">{formattedPendingAmount}</span>
                 </p>
 
                 <div className="flex justify-between mb-6">
@@ -106,7 +106,7 @@ const AdminCustomerPayment = () => {
                         <tr key={p.id} className="text-center">
                         <td className="border border-gray-300 p-3">{p.name}</td>
                         <td className="border border-gray-300 p-3">{p.email}</td>
-                        <td className="border border-gray-300 p-3">Php {p.amount}</td>
+                        <td className="border border-gray-300 p-3">{new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP' }).format(p.amount)}</td>
                         <td className="border border-gray-300 p-3">{p.method}</td>
                         <td className="border border-gray-300 p-3">
                             <span

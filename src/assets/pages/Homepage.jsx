@@ -20,7 +20,7 @@ const Homepage = ({ user }) => {
   const isAdmin = user && user.role === 'admin';
 
   // Beach resort video URL - you'll need to replace this with your actual video URL
-  const beachVideoUrl = " https://cdn.pixabay.com/video/2023/01/30/148597-794221559_large.mp4   ";
+  const beachVideoUrl = " https://cdn.pixabay.com/video/2019/06/19/24541-343454486_large.mp4  ";
 
   const handleBookNow = () => {
     setIslandMessage("Booking in progress...");
@@ -109,19 +109,19 @@ const Homepage = ({ user }) => {
     },
     {
       id: 8,
-      title: "Ocean View Room",
+      title: "Twin Room",
       description: "Our premier room category, these rooms have a large private balcony with a commanding view of our pool, the beach, and the ocean. Fully air-conditioned with mini-fridge, free WiFi, LED TV, tea/coffee facilities, room safe, and other amenities. Complimentary breakfast included if you book directly.",
-      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      image: "https://beachresort.dawal.com.ph/wp-content/uploads/2021/10/SINGLE-UNIT-BEDROOM-OPTION-1-scaled.jpg",
       interiorImages: [
-        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
-        "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
+        "https://beachresort.dawal.com.ph/wp-content/uploads/2021/10/MULTIPLEX-POOL-AREA-BEDROOM-2ND-FLOOR.jpg",
+        "https://webbox.imgix.net/images/lpwdylbdbknlfslw/24952cf4-52c6-470a-985e-9ee6fc20ee96.jpg?auto=format,compress&fit=crop&crop=entropy"
       ]
     },
     {
       id: 9,
-      title: "Deluxe Room",
+      title: "Double Room ",
       description: "Our largest rooms, these rooms are able to accommodate up to 4 adults or 2 adults and 2 children. Both ground floor and 2nd floor rooms are available. Fully air-conditioned with mini-fridge, free WiFi, LED TV, tea/coffee facilities, room safe, and other amenities. Complimentary breakfast included if you book directly.",
-      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      image: "https://www.boholbeachclub.com.ph/assets/room-01.jpg",
       interiorImages: [
         "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
         "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
@@ -129,9 +129,9 @@ const Homepage = ({ user }) => {
     },
     {
       id: 10,
-      title: "Standard Room",
+      title: "Master Bedroom",
       description: "These smaller rooms are comfortable for two adults and are fully air-conditioned with mini-fridge, free WiFi, LED TV, tea/coffee facilities, room safe, and other amenities. Complimentary breakfast included if you book through this website. Both ground floor and 2nd floor rooms are available.",
-      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      image: "https://www.boholbeachclub.com.ph/assets/rates-042.jpg",
       interiorImages: [
         "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
         "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
@@ -141,7 +141,7 @@ const Homepage = ({ user }) => {
       id: 11,
       title: "Budget Room",
       description: "Basic double room, newly refurbished and very comfortable for two adults, with full air conditioning, free WiFi, tea/coffee facilities, and other amenities. Complimentary breakfast included if you book directly. The bed is a queen size bed but is not splitable. These rooms are all ground floor, with limited windows.",
-      image: "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
+      image: "https://beachresort.dawal.com.ph/wp-content/uploads/2021/10/Poolside-Room-e1460112779921.jpg",
       interiorImages: [
         "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg",
         "https://www.aquariusfiji.com/wp-content/uploads/2024/07/Deluxe-400-wide-view.jpg"
@@ -163,7 +163,7 @@ const Homepage = ({ user }) => {
               <span className="text-black text-4xl">𝒜𝓆𝓊𝒶𝓇𝒾𝓊𝓈 𝐵𝑒𝒶𝒸𝒽</span>
             </a>
           </div>
-          <div className="text-2xl md:flex font-bold space-x-8 font-serif italic">
+          <div className="text-2xl md:flex font-bold space-x-20 font-serif italic">
             <Link className="text-black hover:text-yellow-500" to="/">Home</Link>
             <Link className="text-black hover:text-yellow-500" to="/gallery">Gallery</Link>
             <Link className="text-black hover:text-yellow-500" to="/about">About Us</Link>

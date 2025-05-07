@@ -10,6 +10,16 @@ const StaffDashboard = () => {
     { id: 3, name: 'Sosas Johnville', email: 'sosas@example.com', phone: '123-456-7890', checkIn: '2023-10-01', checkOut: '2023-10-05', status: 'Pending', paymentMethod: 'Gcash' },
     { id: 4, name: 'Kent Dinlay', email: 'kent@example.com', phone: '987-654-3210', checkIn: '2023-10-02', checkOut: '2023-10-06', status: 'Accepted', paymentMethod: 'Cash' },
     { id: 5, name: 'Philip Elbambo', email: 'philip@example.com', phone: '555-555-5555', checkIn: '2023-10-03', checkOut: '2023-10-07', status: 'Pending', paymentMethod: 'Gcash' },
+    { id: 6, name: 'Alice Johnson', email: 'alice@example.com', phone: '111-222-3333', checkIn: '2023-10-04', checkOut: '2023-10-08', status: 'Accepted', paymentMethod: 'Gcash' },
+    { id: 7, name: 'Bob Brown', email: 'bob@example.com', phone: '444-555-6666', checkIn: '2023-10-05', checkOut: '2023-10-09', status: 'Pending', paymentMethod: 'Cash' },
+    { id: 8, name: 'Charlie Green', email: 'charlie@example.com', phone: '777-888-9999', checkIn: '2023-10-06', checkOut: '2023-10-10', status: 'Accepted', paymentMethod: 'Gcash' },
+    { id: 9, name: 'Diana Prince', email: 'diana@example.com', phone: '222-333-4444', checkIn: '2023-10-07', checkOut: '2023-10-11', status: 'Pending', paymentMethod: 'Gcash' },
+    { id: 10, name: 'Evan Davis', email: 'evan@example.com', phone: '333-444-5555', checkIn: '2023-10-08', checkOut: '2023-10-12', status: 'Accepted', paymentMethod: 'Cash' },
+    { id: 11, name: 'Fiona Lee', email: 'fiona@example.com', phone: '444-555-6666', checkIn: '2023-10-09', checkOut: '2023-10-13', status: 'Pending', paymentMethod: 'Gcash' },
+    { id: 12, name: 'George Clark', email: 'george@example.com', phone: '555-666-7777', checkIn: '2023-10-10', checkOut: '2023-10-14', status: 'Accepted', paymentMethod: 'Gcash' },
+    { id: 13, name: 'Hannah Kim', email: 'hannah@example.com', phone: '666-777-8888', checkIn: '2023-10-11', checkOut: '2023-10-15', status: 'Pending', paymentMethod: 'Cash' },
+    { id: 14, name: 'Ian Scott', email: 'ian@example.com', phone: '777-888-9999', checkIn: '2023-10-12', checkOut: '2023-10-16', status: 'Accepted', paymentMethod: 'Gcash' },
+    { id: 15, name: 'Julia White', email: 'julia@example.com', phone: '888-999-0000', checkIn: '2023-10-13', checkOut: '2023-10-17', status: 'Pending', paymentMethod: 'Gcash' },
     // Add more reservations as needed
   ]);
 
@@ -119,7 +129,7 @@ const StaffDashboard = () => {
         return (
           <div>
             <h3 className="text-xl font-semibold mb-4">Reservations</h3>
-            <div className=" overflow-x-auto">
+            <div className="overflow-x-auto">
               <table className="min-w-full bg-white border border-gray-300">
                 <thead>
                   <tr>
@@ -156,7 +166,7 @@ const StaffDashboard = () => {
                               className="text-sm bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600"
                               onClick={() => handleReservationAction(reservation.id, 'Pending')}
                             >
-                              Set as Pending
+                              Reject
                             </button>
                           </>
                         )}
@@ -247,7 +257,7 @@ const StaffDashboard = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen bg-gradient-to-br from-[#383e92] to-[#942e6d] text-gray-900">
+    <div className="flex h-screen w-screen bg-gradient-to-br from-[#383e92] to-[#942e6d] text-gray-900 ">
       {/* Loading Overlay */}
       {isLoading && (
         <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center z-50">
@@ -259,7 +269,7 @@ const StaffDashboard = () => {
       )}
 
       {/* Sidebar */}
-      <div className="w-64 bg-gradient-to-br from-[#6268b1] to-[#a55787] p-4 shadow-lg flex flex-col items-center">
+      <div className="w-64 bg-gradient-to-br from-[#6268b1] to-[#a55787] p-4 shadow-lg flex flex-col items-center rounded-lg">
         {/* Profile Picture */}
         <div className="mb-6 flex items-center justify-center border-b-2 border-black pb-3 relative">
           <img
@@ -290,7 +300,7 @@ const StaffDashboard = () => {
             <li key={link} className="mb-3">
               <a
                 href="#"
-                className={`flex items-center p-2 rounded-lg transition-all ${
+                className={`large-font flex items-center p-2 rounded-lg transition-all space-x-20  ${
                   activeLink === link
                     ? 'bg-blue-100 text-blue-900'
                     : 'hover:bg-gray-200'

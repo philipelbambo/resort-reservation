@@ -2,7 +2,21 @@ import React, { useState } from 'react';
 import Header from '../layouts/Header';
 import Sidemenu from '../layouts/Sidemenu';
 import Breadcrumb from '../components/Breadcrumbs';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { 
+  AreaChart, 
+  Area, 
+  LineChart,
+  Line,
+  BarChart,
+  Bar,
+  XAxis, 
+  YAxis, 
+  CartesianGrid, 
+  Tooltip, 
+  Legend, 
+  ResponsiveContainer,
+  ReferenceLine
+} from 'recharts';
 
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState('Overview');
@@ -95,38 +109,89 @@ const AdminDashboard = () => {
             </div>
             <div className="mt-10">
               <h3 className="text-lg font-semibold mb-4">Monthly Resort Data</h3>
-              <ResponsiveContainer width="100%" height={400}>
-                <AreaChart data={monthlyData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: '#666' }} onClick={(data) => handleMonthClick(data.value)} />
-                  <YAxis tick={{ fill: '#666' }} />
-                  <Tooltip />
-                  <Legend />
-                  <Area
-                    type="monotone"
-                    dataKey="totalGuests"
-                    stroke="#D8BFD8"
-                    fill="#D8BFD8"
-                    strokeWidth={3}
-                    activeDot={{ r: 8 }}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="revenue"
-                    stroke="#D8BFD8"
-                    fill="#D8BFD8"
-                    strokeWidth={3}
-                  />
-                  <Area
-                    type="monotone"
-                    dataKey="occupancyRate"
-                    stroke="#D8BFD8"
-                    fill="#D8BFD8"
-                    strokeWidth={3}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+              
+              {/* IMPROVED CHART SECTION */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div className="bg-white p-4 rounded-lg shadow">
+                  <h4 className="text-md font-medium mb-3 text-gray-700">Guest Occupancy</h4>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <BarChart data={monthlyData}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="month" tick={{ fill: '#666' }} />
+                      <YAxis tick={{ fill: '#666' }} />
+                      <Tooltip 
+                        formatter={(value, name) => [value, name === 'totalGuests' ? 'Guests' : name]}
+                        labelFormatter={(label) => `Month: ${label}`}
+                      />
+                      <Legend />
+                      <Bar 
+                        dataKey="totalGuests" 
+                        name="Total Guests"
+                        fill="#8884d8" 
+                        radius={[4, 4, 0, 0]}
+                        onClick={(data) => handleMonthClick(data.month)}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg shadow">
+                  <h4 className="text-md font-medium mb-3 text-gray-700">Revenue Performance</h4>
+                  <ResponsiveContainer width="100%" height={250}>
+                    <LineChart data={monthlyData}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="month" tick={{ fill: '#666' }} />
+                      <YAxis tick={{ fill: '#666' }} />
+                      <Tooltip 
+                        formatter={(value) => [`$${value.toLocaleString()}`, 'Revenue']}
+                        labelFormatter={(label) => `Month: ${label}`}
+                      />
+                      <Legend />
+                      <ReferenceLine y={15000} stroke="red" strokeDasharray="3 3" label="Target" />
+                      <Line 
+                        type="monotone" 
+                        dataKey="revenue" 
+                        name="Monthly Revenue"
+                        stroke="#82ca9d" 
+                        strokeWidth={2}
+                        dot={{ stroke: '#82ca9d', strokeWidth: 2, fill: '#fff', r: 4 }}
+                        activeDot={{ r: 6, stroke: '#82ca9d', strokeWidth: 2, fill: '#fff' }}
+                        onClick={(data) => handleMonthClick(data.month)}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+              
+              <div className="bg-white p-4 rounded-lg shadow">
+                <h4 className="text-md font-medium mb-3 text-gray-700">Occupancy Rate</h4>
+                <ResponsiveContainer width="100%" height={250}>
+                  <AreaChart data={monthlyData}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="month" tick={{ fill: '#666' }} />
+                    <YAxis tick={{ fill: '#666' }} domain={[70, 100]} />
+                    <Tooltip 
+                      formatter={(value) => [`${value}%`, 'Occupancy Rate']}
+                      labelFormatter={(label) => `Month: ${label}`}
+                    />
+                    <Legend />
+                    <ReferenceLine y={90} stroke="#ff9800" strokeDasharray="3 3" label="Target Rate" />
+                    <Area
+                      type="monotone"
+                      dataKey="occupancyRate"
+                      name="Occupancy Rate"
+                      stroke="#ff7300"
+                      fill="#ffd8b5"
+                      strokeWidth={2}
+                      activeDot={{ r: 6 }}
+                      onClick={(data) => handleMonthClick(data.month)}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+              {/* END IMPROVED CHART SECTION */}
             </div>
+            
             {selectedMonth && (
               <div className="mt-10">
                 <h3 className="text-lg font-semibold mb-4">Weekly New Guests and Revenue for {selectedMonth}</h3>
