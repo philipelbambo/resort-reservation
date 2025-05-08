@@ -14,6 +14,7 @@ import AdminRoomAvailability from './assets/pages/AdminRoomAvalability.jsx';
 import Profile from './assets/pages/Profile.jsx';
 import ManageReservations from './assets/pages/ManageReservation.jsx';
 import StaffDashboard from './assets/pages/StaffDashboard.jsx';
+import CottageReservationSystem from './assets/pages/cottage.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -32,6 +33,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/admin-room-availability" element={<AdminRoomAvailability />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/staff-dashboard" element={<StaffDashboard />} />
+        <Route path="/cottage-reservation" element={<CottageReservationSystem />} />
 
       </Routes>
     </Router>

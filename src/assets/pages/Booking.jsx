@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 
 const RoomView = () => {
     const [rooms, setRooms] = useState([
-        { id: 1, roomNumber: 101, name: "Deluxe", image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/d5/3e/2b/villa-criselda-resort.jpg?w=700&h=-1&s=1", capacity: 2, price: 2000, available: 10, description: "A cozy room with basic amenities, perfect for a short stay." },
-        { id: 2, roomNumber: 102, name: "Beach front", image: "https://content3.jdmagicbox.com/comp/kodaikanal/p3/9999p4542.4542.220524121756.z3p3/catalogue/cloudy-mist-kodaikanal-ho-kodaikanal-rooms-on-rent-78jldoxlmf.jpg", capacity: 3, price: 2500, available: 7, description: "A spacious room with modern amenities and a beautiful view." },
+        { id: 1, roomNumber: 101, name: "Deluxe", image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/d5/3e/2b/villa-criselda-resort.jpg?w=700&h=-1&s=1", capacity: 2, price: 2000, available: 5, description: "A cozy room with basic amenities, perfect for a short stay." },
+        { id: 2, roomNumber: 102, name: "Beach front", image: "https://content3.jdmagicbox.com/comp/kodaikanal/p3/9999p4542.4542.220524121756.z3p3/catalogue/cloudy-mist-kodaikanal-ho-kodaikanal-rooms-on-rent-78jldoxlmf.jpg", capacity: 3, price: 2500, available: 5, description: "A spacious room with modern amenities and a beautiful view." },
         { id: 3, roomNumber: 103, name: "Family", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/241625097.jpg?k=0230cabacc6d6171abed86217c0b3c092434758310f8ad204628dd9d58aaae24&o=&hp=1", capacity: 4, price: 3000, available: 5, description: "A large suite perfect for families, with extra space and comfort." },
-        { id: 4, roomNumber: 104, name: "Villa", image: "https://media-cdn.tripadvisor.com/media/photo-s/07/dc/cf/8e/sapa-local-house.jpg", capacity: 2, price: 3500, available: 4, description: "A luxurious room with premium amenities, ideal for business travelers." },
-        { id: 5, roomNumber: 105, name: "Group Villa", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/248013752.jpg?k=fb8fad6aa9071fdf29dc3a53bcf390caf3b5faf3958c5d2166d6bbcb0c9ee378&o=&hp=1", capacity: 2, price: 3800, available: 6, description: "A room with a stunning ocean view, perfect for a relaxing getaway." },
-        { id: 6, roomNumber: 106, name: "Private Villa", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/248013758.jpg?k=b18f09ecddce20afe34d5d6cdbd4b2e874a1bc00c5711c678f42c788f6313334&o=&hp=1", capacity: 2, price: 4000, available: 4, description: "A romantic suite designed for couples, with a private balcony and jacuzzi." },
+        { id: 4, roomNumber: 104, name: "Villa", image: "https://media-cdn.tripadvisor.com/media/photo-s/07/dc/cf/8e/sapa-local-house.jpg", capacity: 2, price: 3500, available: 5, description: "A luxurious room with premium amenities, ideal for business travelers." },
+        { id: 5, roomNumber: 105, name: "Group Villa", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/248013752.jpg?k=fb8fad6aa9071fdf29dc3a53bcf390caf3b5faf3958c5d2166d6bbcb0c9ee378&o=&hp=1", capacity: 2, price: 3800, available: 5, description: "A room with a stunning ocean view, perfect for a relaxing getaway." },
+        { id: 6, roomNumber: 106, name: "Private Villa", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/248013758.jpg?k=b18f09ecddce20afe34d5d6cdbd4b2e874a1bc00c5711c678f42c788f6313334&o=&hp=1", capacity: 2, price: 4000, available: 5, description: "A romantic suite designed for couples, with a private balcony and jacuzzi." },
         { id: 7, roomNumber: 107, name: "Standard Suite", image: "https://bohol-sunside-resort.com/wp-content/uploads/apartment-5-peple-living-room.jpg", capacity: 6, price: 5000, available: 9, description: "A luxurious penthouse with panoramic views, perfect for large groups or special occasions." },
-        { id: 8, roomNumber: 108, name: "Beach House", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/507116774.jpg?k=6a62ed271ca5d04f14a2a5cee2a174334e3e41998043831b01a6bc7361a785c9&o=&hp=1", capacity: 2, price: 3000, available: 4, description: "A serene room overlooking the garden, ideal for nature lovers." },
+        { id: 8, roomNumber: 108, name: "Beach House", image: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/507116774.jpg?k=6a62ed271ca5d04f14a2a5cee2a174334e3e41998043831b01a6bc7361a785c9&o=&hp=1", capacity: 2, price: 3000, available: 5, description: "A serene room overlooking the garden, ideal for nature lovers." },
     ]);
 
     const [cottages, setCottages] = useState([
         { id: 1, cottageNumber: 201, name: "Serene Haven", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWG1f6Ecq6FrPWTzi2zbqJPd4Xop5g7QXL-Q&s", capacity: 4, price: 350, available: 3 },
-        { id: 2, cottageNumber: 202, name: "Willow Cottage", image: "https://media-cdn.tripadvisor.com/media/photo-s/01/8d/dd/99/can-t-help-feeling-introspecti.jpg", capacity: 6, price: 650, available: 2 },
+        { id: 2, cottageNumber: 202, name: "Willow Cottage", image: "https://media-cdn.tripadvisor.com/media/photo-s/01/8d/dd/99/can-t-help-feeling-introspecti.jpg", capacity: 6, price: 650, available: 3 },
         { id: 3, cottageNumber: 203, name: "Tranquil Nest", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw-pKmJPrzjt7fp7w4bBCHrsIhIxZkcix_D10ml1jaVB3_okFZ0l8GAhSb_nsB_Qa7KmA&usqp=CAU", capacity: 8, price: 500, available: 3 },
-        { id: 4, cottageNumber: 204, name: "River Breeze Cottage", image: "https://cdn.prod.website-files.com/59a30a523e53e400017c4ded/59ca1872b5fc1c000144b77b_delight01.jpg", capacity: 10, price: 700, available: 2 },
+        { id: 4, cottageNumber: 204, name: "River Breeze Cottage", image: "https://cdn.prod.website-files.com/59a30a523e53e400017c4ded/59ca1872b5fc1c000144b77b_delight01.jpg", capacity: 10, price: 700, available: 3 },
         { id: 5, cottageNumber: 205, name: "Sunset Hollow", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6b5MwFYNi_aRxLw4q1I4ZYPQUGCcZI1FNBHP9qw1_UXSaSD3jH2QoGP-_8Y9jbhGrvQ&usqp=CAU", capacity: 4, price: 400, available: 3 },
-        { id: 6, cottageNumber: 206, name: "Ocean Bliss Villa", image: "https://juandollartraveler.wordpress.com/wp-content/uploads/2018/04/open-hut.jpeg?w=748", capacity: 6, price: 600, available: 2 },
-        { id: 7, cottageNumber: 207, name: "Beach side cottage", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD8KxXaqqYc_gj4z1QKIU8LRBSOxzzfAZRHopM-s7cygH63o-hXpSusJrgxm4Lmuw5YU8&usqp=CAU", capacity: 8, price: 4000, available: 2 },
+        { id: 6, cottageNumber: 206, name: "Ocean Bliss Villa", image: "https://juandollartraveler.wordpress.com/wp-content/uploads/2018/04/open-hut.jpeg?w=748", capacity: 6, price: 600, available: 3 },
+        { id: 7, cottageNumber: 207, name: "Beach side cottage", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD8KxXaqqYc_gj4z1QKIU8LRBSOxzzfAZRHopM-s7cygH63o-hXpSusJrgxm4Lmuw5YU8&usqp=CAU", capacity: 8, price: 4000, available: 3 },
         { id: 8, cottageNumber: 208, name: "Classic cottage ", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp02MkhAHDQuCIfmlhMQr258EFfsX8NVn2RS8HsZxVjGsRHmJPNFkKX2sntUQpa0lO4_s&usqp=CAU", capacity: 4, price: 500, available: 3 },
     ]);
 
@@ -201,7 +201,7 @@ const RoomView = () => {
         >
             <button
                 onClick={handleBack}
-                className="absolute top-2 left-1 bg-black text-white rounded-full p-2 shadow-md mt-0 hover:bg-gray-300 transition-all"
+                className="absolute top-3 left-5  bg-black text-white rounded-full p-2 shadow-md mt-0 hover:bg-gray-300 transition-all"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

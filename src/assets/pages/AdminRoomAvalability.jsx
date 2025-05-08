@@ -8,19 +8,19 @@ const AdminRoomAvailability = () => {
   const [filter, setFilter] = useState("all");
 
   const rooms = [
-    { id: 1, name: "Deluxe", roomNumber: "101", category: "Room", capacity: 1, price: 100, available: 5 },
-    { id: 2, name: "Beach front", roomNumber: "102", category: "Room", capacity: 2, price: 150, available: 3 },
-    { id: 3, name: "Family standard", roomNumber: "103", category: "Room", capacity: 4, price: 300, available: 2 },
-    { id: 4, name: "villa", roomNumber: "104", category: "Room", capacity: 1, price: 110, available: 4 },
-    { id: 5, name: "Group villa", roomNumber: "105", category: "Room", capacity: 2, price: 160, available: 6 },
-    { id: 6, name: "Private villa", roomNumber: "106", category: "Room", capacity: 4, price: 310, available: 1 },
-    { id: 7, name: "Standard suite", roomNumber: "107", category: "Room", capacity: 1, price: 120, available: 3 },
-    { id: 8, name: "Family Double", roomNumber: "108", category: "Room", capacity: 2, price: 170, available: 2 },
-    { id: 9, name: "Beach house", roomNumber: "109", category: "Room", capacity: 4, price: 320, available: 4 },
-    { id: 10, name: "Serene haven Cottage", roomNumber: "110", category: "Cottage", capacity: 6, price: 400, available: 5 },
-    { id: 11, name: "willow Cottage", roomNumber: "111", category: "Cottage", capacity: 8, price: 450, available: 3 },
-    { id: 12, name: "River breeze cottage Cottage", roomNumber: "112", category: "Cottage", capacity: 10, price: 500, available: 2 },
-    { id: 13, name: "Ocean bliss villa Cottage", roomNumber: "113", category: "Cottage", capacity: 12, price: 550, available: 1 },
+    { id: 1, name: "Deluxe", roomNumber: "101", category: "Room", capacity: 4, price: 100, available: 5 },
+    { id: 2, name: "Beach front", roomNumber: "102", category: "Room", capacity: 3, price: 150, available: 5 },
+    { id: 3, name: "Family standard", roomNumber: "103", category: "Room", capacity: 4, price: 300, available: 5 },
+    { id: 4, name: "villa", roomNumber: "104", category: "Room", capacity: 3, price: 110, available: 5 },
+    { id: 5, name: "Group villa", roomNumber: "105", category: "Room", capacity: 4, price: 160, available: 5 },
+    { id: 6, name: "Private villa", roomNumber: "106", category: "Room", capacity: 3, price: 310, available: 5 },
+    { id: 7, name: "Standard suite", roomNumber: "107", category: "Room", capacity: 4, price: 120, available: 5 },
+    { id: 8, name: "Family Double", roomNumber: "108", category: "Room", capacity: 5, price: 170, available: 5 },
+    { id: 9, name: "Beach house", roomNumber: "109", category: "Room", capacity: 4, price: 320, available: 5 },
+    { id: 10, name: "Serene haven Cottage", roomNumber: "201", category: "Cottage", capacity: 6, price: 400, available: 3 },
+    { id: 11, name: "willow Cottage", roomNumber: "202", category: "Cottage", capacity: 8, price: 450, available: 3 },
+    { id: 12, name: "River breeze cottage Cottage", roomNumber: "203", category: "Cottage", capacity: 10, price: 500, available: 3 },
+    { id: 13, name: "Ocean bliss villa Cottage", roomNumber: "204", category: "Cottage", capacity: 12, price: 550, available: 3 },
   ];
 
   const breadcrumbLinks = [

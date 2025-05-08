@@ -1,11 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLock, FaTimes } from "react-icons/fa";
 
 const DynamicIsland = ({ message }) => {
   return (
-    <div className="dynamic-island bg-black text-white px-4 py-2 rounded-full shadow-lg fixed top-8 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="dynamic-island bg-black text-white px-4 py-2 rounded-full shadow-lg fixed top-8 left-1/2 transform -translate-x-1/2 z-50 animate-fadeIn">
       {message}
+    </div>
+  );
+};
+
+// Custom hook to detect if element is visible on scroll
+const useIntersectionObserver = (options = {}) => {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, options);
+
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [options]);
+
+  return [ref, isVisible];
+};
+
+const AnimatedElement = ({ children, className, threshold = 0.2, rootMargin = '0px', once = true }) => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold,
+    rootMargin,
+  });
+
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (isVisible && once) {
+      setHasAnimated(true);
+    }
+  }, [isVisible, once]);
+
+  const shouldBeVisible = once ? isVisible || hasAnimated : isVisible;
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ${shouldBeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'} ${className}`}
+    >
+      {children}
     </div>
   );
 };
@@ -16,11 +67,17 @@ const Homepage = ({ user }) => {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [islandMessage, setIslandMessage] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const isAdmin = user && user.role === 'admin';
 
   // Beach resort video URL - you'll need to replace this with your actual video URL
   const beachVideoUrl = " https://cdn.pixabay.com/video/2019/06/19/24541-343454486_large.mp4  ";
+
+  useEffect(() => {
+    // Set isLoaded to true after component mounts to trigger initial animations
+    setIsLoaded(true);
+  }, []);
 
   const handleBookNow = () => {
     setIslandMessage("Booking in progress...");
@@ -154,9 +211,37 @@ const Homepage = ({ user }) => {
     feature.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Create ref for navbar to check scroll direction
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNav, setShowNav] = useState(true);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        if (currentScrollY > 100) {
+          setShowNav(false);
+        }
+      } else {
+        // Scrolling up
+        setShowNav(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlNavbar);
+    
+    return () => {
+      window.removeEventListener('scroll', controlNavbar);
+    };
+  }, [lastScrollY]);
+
   return (
     <div className="bg-gray-100">
-      <nav className="bg-white shadow-md">
+      <nav className={`bg-white shadow-md fixed w-full z-50 transition-transform duration-300 ${showNav ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="container mx-auto flex justify-between items-center py-5 px-4 relative">
           <div className="text-2xl font-bold">
             <a className="hero-text" href="#">
@@ -164,14 +249,14 @@ const Homepage = ({ user }) => {
             </a>
           </div>
           <div className="text-2xl md:flex font-bold space-x-20 font-serif italic">
-            <Link className="text-black hover:text-yellow-500" to="/">Home</Link>
-            <Link className="text-black hover:text-yellow-500" to="/gallery">Gallery</Link>
-            <Link className="text-black hover:text-yellow-500" to="/about">About Us</Link>
-            <Link className="text-black hover:text-yellow-500" to="/contact">Contact/Info</Link>
+            <Link className="text-black hover:text-yellow-500 transition-transform hover:scale-110" to="/">Home</Link>
+            <Link className="text-black hover:text-yellow-500 transition-transform hover:scale-110" to="/gallery">Gallery</Link>
+            <Link className="text-black hover:text-yellow-500 transition-transform hover:scale-110" to="/about">About Us</Link>
+            <Link className="text-black hover:text-yellow-500 transition-transform hover:scale-110" to="/contact">Location</Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
             {isAdmin && (
-              <Link to="/admin" className="text-gray-700 hover:text-yellow-500 group relative">
+              <Link to="/admin" className="text-gray-700 hover:text-yellow-500 group relative transition-transform hover:scale-110">
                 <FaLock size={30} />
                 <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   Admin Panel
@@ -183,7 +268,7 @@ const Homepage = ({ user }) => {
         </div>
       </nav>
 
-      {/* Video Hero Section */}
+      {/* Video Hero Section with animation */}
       <div className="relative">
         <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
         <video 
@@ -197,21 +282,21 @@ const Homepage = ({ user }) => {
           Your browser does not support the video tag.
         </video>
         <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 z-20">
-          <h1 className="text-4xl md:text-6xl font-bold hero-text animate-fade-in mt-0">
+          <h1 className={`text-4xl md:text-6xl font-bold hero-text transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Aquarius Beach Resort
           </h1>
-          <h1 className="text-4xl md:text-5xl font-extralight animate-fade-in mt-10 font-serif italic">
+          <h1 className={`text-4xl md:text-5xl font-extralight mt-10 font-serif italic transition-all duration-1000 delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             Find your perfect escape where Ocean meets comfort.
           </h1>
         </div>
       </div>
 
-      <div className="flex justify-center space-x-5 mt-4">
+      <AnimatedElement className="flex justify-center space-x-5 mt-4 py-2">
         <a
           href="https://facebook.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black text-xl hover:text-blue-600 transition"
+          className="text-black text-xl hover:text-blue-600 transition-transform hover:scale-125"
         >
           <FaFacebookF />
         </a>
@@ -219,7 +304,7 @@ const Homepage = ({ user }) => {
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black text-xl hover:text-pink-500 transition"
+          className="text-black text-xl hover:text-pink-500 transition-transform hover:scale-125"
         >
           <FaInstagram />
         </a>
@@ -227,18 +312,23 @@ const Homepage = ({ user }) => {
           href="https://twitter.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-black text-xl hover:text-blue-400 transition"
+          className="text-black text-xl hover:text-blue-400 transition-transform hover:scale-125"
         >
           <FaTwitter />
         </a>
-      </div>
+      </AnimatedElement>
 
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-16 text-black">Discover Aquarius Beach Resort</h2>
+        <AnimatedElement threshold={0.1}>
+          <h2 className="text-4xl font-bold text-center mb-16 text-black">Discover Aquarius Beach Resort</h2>
+        </AnimatedElement>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {filteredFeatures.map((feature, index) => (
-            <div
-              key={feature.id}
+            <AnimatedElement 
+              key={feature.id} 
+              threshold={0.1}
+              rootMargin="0px 0px -100px 0px"
               className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8`}
             >
               <div className="w-full md:w-1/2">
@@ -253,12 +343,12 @@ const Homepage = ({ user }) => {
                 <h3 className="text-2xl font-bold mb-4 text-gray-800">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </div>
-            </div>
+            </AnimatedElement>
           ))}
         </div>
       </div>
 
-      <div className="bg-black text-white py-16">
+      <AnimatedElement threshold={0.2} className="bg-black text-white py-16">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready for Your Dream Vacation?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -271,13 +361,13 @@ const Homepage = ({ user }) => {
             RESERVE NOW!
           </button>
         </div>
-      </div>
+      </AnimatedElement>
 
       {selectedRoom && (
-        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-white/30 z-50">
-          <div className="max-w-4xl w-full p-4 bg-white rounded-lg relative">
+        <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm bg-white/30 z-50 animate-fadeIn">
+          <div className="max-w-4xl w-full p-4 bg-white rounded-lg relative animate-scaleUp">
             <button
-              className="text-black text-2xl absolute top-4 right-4 bg-gray-200 rounded-full p-2"
+              className="text-black text-2xl absolute top-4 right-4 bg-gray-200 rounded-full p-2 hover:bg-gray-300 transition-colors"
               onClick={() => setSelectedRoom(null)}
             >
               <FaTimes />
@@ -286,7 +376,7 @@ const Homepage = ({ user }) => {
             <p className="text-gray-600 mb-4">{selectedRoom.description}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {selectedRoom.interiorImages.map((image, index) => (
-                <img key={index} src={image} alt={`Interior ${index + 1}`} className="w-full h-auto rounded-lg" />
+                <img key={index} src={image} alt={`Interior ${index + 1}`} className="w-full h-auto rounded-lg animate-fadeIn" style={{ animationDelay: `${index * 200}ms` }} />
               ))}
             </div>
           </div>
