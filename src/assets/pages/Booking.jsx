@@ -197,7 +197,7 @@ const RoomView = () => {
     return (
         <div
             className="p-15 bg-cover bg-center min-h-screen"
-            style={{ backgroundImage: 'url(" https://i.pinimg.com/originals/0b/46/94/0b4694c4bae13b92f07ef13a2e146eec.gif ")' }}
+            style={{ backgroundImage: 'url(" https://i.pinimg.com/originals/82/bc/31/82bc31f3b6b8b85c06aa8e04518be0cf.gif ")' }}
         >
             <button
                 onClick={handleBack}
